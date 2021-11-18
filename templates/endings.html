@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endings</title>
+</head>
+<body>
+    {% for ending in endings %}
+        {{ ending.ending_name }}<br>
+        {{ ending.category_name }}<br>
+        {{ ending.ending_description }}<br>
+    {% endfor %}
+</body>
+</html>

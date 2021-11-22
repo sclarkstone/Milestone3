@@ -25,7 +25,7 @@
 					<li><a href="#">New Ending</a></li>
 					<li><a href="#">Manage Categories</a></li>
 					<li><a href="#">Log Out</a></li>
-					<li><a href="#">Log In</a></li>
+					<li><a href="{{ url_for('login') }}">Log In</a></li>
 					<li><a href="{{ url_for('register') }}">Register</a></li>
 				</ul>
 			</div>
@@ -39,11 +39,11 @@
             <li><a href="#">New Ending</a></li>
             <li><a href="#">Manage Categories</a></li>
             <li><a href="#">Log Out</a></li>
-            <li><a href="#">Log In</a></li>
+            <li><a href="{{ url_for('login') }}">Log In</a></li>
             <li><a href="{{ url_for('register') }}">Register</a></li>
 		</ul>
 	</header>
-    
+
     <section>
         <!-- flash messages -->
         {% with messages = get_flashed_messages() %}

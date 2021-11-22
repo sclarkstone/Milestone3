@@ -97,9 +97,11 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/ending")
+@app.route("/add_ending")
 def add_ending():
-    return render_template("add_ending.html")
+    genres = mongo.db.genres.find().sort("genre_name", 1)
+    types = mongo.db.types.find().sort("type_name", 1)
+    return render_template("add_ending.html", genres=genres, types=types)
 
 
 if __name__ == "__main__":

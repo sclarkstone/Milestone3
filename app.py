@@ -122,7 +122,8 @@ def add_ending():
 def edit_ending(ending_id):
     ending = mongo.db.endings.find_one({"_id": ObjectId(ending_id)})
     genres = mongo.db.genres.find().sort("genre_name", 1)
-    return render_template("edit_ending.html", ending=ending, genres=genres)
+    types = mongo.db.types.find().sort("type_name", 1)
+    return render_template("edit_ending.html", ending=ending, genres=genres, types=types)
 
 
 if __name__ == "__main__":

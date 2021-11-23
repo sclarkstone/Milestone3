@@ -46,6 +46,8 @@ def register():
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
+        return redirect(url_for("profile", username=session["user"]))
+    
     return render_template("register.html")
 
 
@@ -120,10 +122,22 @@ def add_ending():
 
 @app.route("/edit_ending/<ending_id>", methods=["GET", "POST"])
 def edit_ending(ending_id):
+    if request.method == "POST":
+        submit = {
+            "genre_name": request.form.get("genre_name"),
+            "ending_type": request.form.get("type_name"),
+            "ending_name": request.form.get("ending_name"),
+            "ending_description": request.form.get("ending_description"),
+            "ending_date": datetime.now(),
+            "created_by": session["user"]
+        }
+        mongo.db.endings.update({"_id": ObjectId(ending_id)}, submit)
+        flash("Ending Successfully Updated")
+
     ending = mongo.db.endings.find_one({"_id": ObjectId(ending_id)})
-    genres = mongo.db.genres.find().sort("genre_name", 1)
+    genres = mongo.db.genres.find().sort("genres_name", 1)
     types = mongo.db.types.find().sort("type_name", 1)
-    return render_template("edit_ending.html", ending=ending, genres=genres, types=types)
+    return render_template("edit_ending.html", ending=ending, types=types, genres=genres)
 
 
 if __name__ == "__main__":

@@ -29,7 +29,7 @@
 					<select id="type_name" name="type_name" class="validate" required>
                         <option value="" disabled selected>Choose Type</option>
                         {% for type in types %}
-                            {% if type.type_name == ending.type_name %}
+                            {% if type.type_name == ending.ending_type %}
                                 <option value="{{ type.type_name }}" selected>{{ type.type_name }}</option>
                             {% else %}
                                 <option value="{{ type.type_name }}">{{ type.type_name }}</option>

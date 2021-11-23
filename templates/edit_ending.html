@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h3 class="light-blue-text text-darken-4 center-align">Add Better Ending</h3>
+    <h3 class="light-blue-text text-darken-4 center-align">Edit Better Ending</h3>
 
     <div class="row card-panel grey lighten-5">
-        <form class="col s12" method="POST" action="{{ url_for('add_ending') }}">
+        <form class="col s12" method="POST" action="{{ url_for('edit_ending', ending_id=ending._id) }}">
             <!-- genre selection -->
             <div class="row">
 				<div class="input-field col s12">
@@ -58,7 +58,7 @@
             <div class="row">
                 <div class="col s12 center-align">
                     <button type="submit" class="btn-large light-blue darken-1 text-shadow">
-                        Add Ending <i class="fas fa-plus-square right"></i>
+                        Edit ending <i class="fas fa-edit right"></i>
                     </button>
                 </div>
             </div>

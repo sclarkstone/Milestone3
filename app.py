@@ -118,6 +118,13 @@ def add_ending():
     return render_template("add_ending.html", genres=genres, types=types)
 
 
+@app.route("/edit_ending/<ending_id>", methods=["GET", "POST"])
+def edit_ending(ending_id):
+    ending = mongo.db.endings.find_one({"_id": ObjectId(ending_id)})
+    genres = mongo.db.genres.find().sort("genre_name", 1)
+    return render_template("edit_ending.html", ending=ending, genres=genres)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

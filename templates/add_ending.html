@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h3 class="light-blue-text text-darken-4 center-align">Add Task</h3>
+    <h3 class="light-blue-text text-darken-4 center-align">Add Better Ending</h3>
 
     <div class="row card-panel grey lighten-5">
         <form class="col s12" method="POST" action="">
+            <!-- genre selection -->
             <div class="row">
 				<div class="input-field col s12">
                     <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
@@ -17,10 +18,11 @@
 					<label for="genre_name">Ending Genre</label>
 				</div>
 			</div>
+            <!-- type selection -->
             <div class="row">
 				<div class="input-field col s12">
                     <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
-					<select id="type_name" name="genre_name" class="validate" required>
+					<select id="type_name" name="type_name" class="validate" required>
                         <option value="" disabled selected>Choose Type</option>
                         {% for type in types %}
                             <option value="{{ type.type_name }}">{{ type.type_name }}</option>
@@ -29,6 +31,7 @@
 					<label for="type_name">Ending Type</label>
 				</div>
 			</div>
+            <!-- name -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
@@ -37,11 +40,12 @@
                     <label for="ending_name">Ending Name</label>
                 </div>
             </div>
+            <!-- ending Description -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-align-left prefix light-blue-text text-darken-4"></i>
                     <textarea id="ending_description" name="ending_description" minlength="5"
-                        maxlength="200" class="materialize-textarea validate" required></textarea>
+                        maxlength="2000" class="materialize-textarea validate" required></textarea>
                     <label for="ending_description">Ending Description</label>
                 </div>
             </div>
@@ -50,8 +54,14 @@
                     <input type="hidden" name="current_date" value="2001-11-22" readonly="readonly">
                 </div>
             </div>
-			<div class="row">
-			</div>
+			<!-- submit button -->
+            <div class="row">
+                <div class="col s12 center-align">
+                    <button type="submit" class="btn-large light-blue darken-1 text-shadow">
+                        Add Task <i class="fas fa-plus-square right"></i>
+                    </button>
+                </div>
+            </div>
         </form>
     </div>
 

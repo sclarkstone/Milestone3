@@ -5,6 +5,7 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime
 if os.path.exists("env.py"):
     import env
 
@@ -97,8 +98,21 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/add_ending")
+@app.route("/add_ending", methods=["GET", "POST"])
 def add_ending():
+    if request.method == "POST":
+        ending = {
+            "genre_name": request.form.get("genre_name"),
+            "ending_type": request.form.get("type_name"),
+            "ending_name": request.form.get("ending_name"),
+            "ending_description": request.form.get("ending_description"),
+            "ending_date": datetime.now(),
+            "created_by": session["user"]
+        }
+        mongo.db.endings.insert_one(ending)
+        flash("Ending Successfully Added")
+        return redirect(url_for("get_endings"))
+
     genres = mongo.db.genres.find().sort("genre_name", 1)
     types = mongo.db.types.find().sort("type_name", 1)
     return render_template("add_ending.html", genres=genres, types=types)

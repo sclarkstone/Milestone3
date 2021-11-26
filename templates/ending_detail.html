@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h4 class="light-blue-text text-darken-4 center-align">Prefer this ending to the original?</h4>
+<p class="center-align">Why not leave a review and upvote to let the author know.</p>
+<p class="center-align">Rememeber to login or register to leave a review.</p>
+
+<div class="row">
+    <div class="col s12">
+      <div class="card light-blue lighten-4">
+        <div class="card-content black-text">
+          <span class="card-title"><strong>Title</strong> : {{ ending.ending_name }}</span>
+                    <strong>Genre: </strong> {{ ending.genre_name }}<br>
+                <strong>Type: </strong> {{ ending.ending_type }}<br>
+                <strong>Better Ending: </strong>
+                <p>{{ ending.ending_description }}</p>
+                <p><em>By: {{ ending.created_by }}</em></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

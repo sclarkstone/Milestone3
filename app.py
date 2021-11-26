@@ -28,6 +28,14 @@ def get_endings():
     return render_template("endings.html", endings=endings, ratings=ratings)
 
 
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    endings = list(mongo.db.endings.find({"$text": {"$search": query}}))
+
+    return render_template("endings_all.html", endings=endings)
+
+
 @app.route("/ending_detail/<ending_id>")
 def ending_detail(ending_id):
     ending = mongo.db.endings.find_one({"_id": ObjectId(ending_id)})
@@ -101,6 +109,13 @@ def profile(username):
         return render_template("profile.html", username=username, endings=endings)
 
     return redirect(url_for("login"))
+
+
+@app.route("/endings_all")
+def endings_all():
+    endings = mongo.db.endings.find()
+
+    return render_template("endings_all.html", endings=endings)
 
 
 @app.route("/logout")

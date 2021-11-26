@@ -95,8 +95,10 @@ def profile(username):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
+    endings = mongo.db.endings.find({"created_by": username})
+
     if session["user"]:
-        return render_template("profile.html", username=username)
+        return render_template("profile.html", username=username, endings=endings)
 
     return redirect(url_for("login"))
 
@@ -147,6 +149,13 @@ def edit_ending(ending_id):
     genres = mongo.db.genres.find().sort("genres_name", 1)
     types = mongo.db.types.find().sort("type_name", 1)
     return render_template("edit_ending.html", ending=ending, types=types, genres=genres)
+
+
+@app.route("/delete_ending/<ending_id>")
+def delete_ending(ending_id):
+    mongo.db.endings.remove({"_id": ObjectId(ending_id)})
+    flash("Ending Successfully Deleted")
+    return redirect(url_for("get_endings"))
 
 
 if __name__ == "__main__":

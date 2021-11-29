@@ -26,10 +26,7 @@
     <div class="col s12">
       <div class="card light-blue lighten-4">
         <div class="card-content black-text">
-          <span class="card-title"><strong>Title</strong> : {{ ending.ending_name }}</span>
-          
-        </div>
-        <div class="card-action">
+          <span class="card-title">{{ ending.ending_name }} ({{ ending.ending_type }} - {{ ending.genre_name }})</span>
           <a href="{{ url_for('ending_detail', ending_id=ending._id) }}">Read more...</a>
         </div>
       </div>

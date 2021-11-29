@@ -6,11 +6,21 @@
     line-height: 2;
 }
 
-.btn-small {
-    margin: 5px;
+/* header */
+@media only screen and (max-width: 425px){
+nav .brand-logo {
+    left: 40%;
+}
 }
 
-.collapsible-header .col strong {
-    margin: 5px;
-    line-height: 42px;
-}
+
+/* footer */
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }

@@ -3,31 +3,66 @@
 <h4 class="light-blue-text text-darken-4 center-align">Have you ever watched a film or tv series and been disappointed with the ending?</h4>
 <p class="center-align">Ever thought you could write a better ending?</p>
 <p class="center-align">Well now is your chance! write and submit your better ending and see if people prefer it.</p>
-<p class="center-align">Check out the most recent and highesr rated better endings or have a <a href="{{ url_for('endings_all') }}">Browse</a> through all the better endings.</p>
+<p class="center-align">Check out the most recent and highest rated better endings or have a <a href="{{ url_for('endings_all') }}">Browse</a> through all the better endings.</p>
 
-{% for ending in endings %}
+
 <div class="row">
-    <div class="col s12">
-      <div class="card light-blue lighten-4">
-        <div class="card-content black-text">
-          <span class="card-title">{{ ending.ending_name }} ({{ ending.ending_type }} - {{ ending.genre_name }})<span class="new badge blue" data-badge-caption="Most recent"></span></span>
-          <a href="{{ url_for('ending_detail', ending_id=ending._id) }}">Read more...</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  {% endfor %}
-  {% for rating in ratings %}
+  <div class="col s12">
+    <div class="card light-blue lighten-4">
+      <div class="card-content black-text">
+        <span class="card-title">TOP 3 - RECENTLY ADDED</span>
+<table class="highlight">
+  <thead>
+    <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for ending in endings %}
+    <tr>
+      <td>{{ ending.ending_name }}</td>
+      <td>({{ ending.ending_type }} - {{ ending.genre_name }})</td>
+      <td><a href="{{ url_for('ending_detail', ending_id=ending._id) }}">Read more...</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
 <div class="row">
-    <div class="col s12">
-      <div class="card light-blue lighten-4">
-        <div class="card-content black-text">
-          <span class="card-title">{{ rating.ending_name }} ({{ rating.ending_type }} - {{ rating.genre_name }})<span class="new badge blue" data-badge-caption="Highest rated"></span></span>
-          <a href="{{ url_for('ending_detail', ending_id=rating._id) }}">Read more...</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  {% endfor %}
+  <div class="col s12">
+    <div class="card light-blue lighten-4">
+      <div class="card-content black-text">
+        <span class="card-title">TOP 3 - HIGHEST RATED</span>
+        <table class="highlight">
+  <thead>
+    <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for rating in ratings %}
+    <tr>
+      <td>{{ rating.ending_name }}</td>
+      <td>({{ rating.ending_type }} - {{ rating.genre_name }})</td>
+      <td> <a href="{{ url_for('ending_detail', ending_id=rating._id) }}">Read more...</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
 
 {% endblock %}

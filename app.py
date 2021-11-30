@@ -22,8 +22,8 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_endings")
 def get_endings():
-    endings = mongo.db.endings.find().sort("ending_date", -1).limit(1)
-    ratings = mongo.db.endings.find().sort("rating", -1).limit(1)
+    endings = mongo.db.endings.find().sort("ending_date", -1).limit(3)
+    ratings = mongo.db.endings.find().sort("rating", -1).limit(3)
 
     return render_template("endings.html", endings=endings, ratings=ratings)
 
@@ -135,7 +135,8 @@ def add_ending():
             "ending_name": request.form.get("ending_name"),
             "ending_description": request.form.get("ending_description"),
             "ending_date": datetime.now(),
-            "created_by": session["user"]
+            "created_by": session["user"],
+            "rated": 0
         }
         mongo.db.endings.insert_one(ending)
         flash("Ending Successfully Added")
@@ -171,6 +172,17 @@ def delete_ending(ending_id):
     mongo.db.endings.remove({"_id": ObjectId(ending_id)})
     flash("Ending Successfully Deleted")
     return redirect(url_for("get_endings"))
+
+
+@app.route("/upvote_ending/<ending_id>", methods=["GET", "POST"])
+def upvote_ending(ending_id):
+    if request.method == "POST":
+        mongo.db.endings.update({'_id': ObjectId(ending_id)}, {'$inc': {'rated': 1}})
+
+        flash("Upvote Successful")
+        ending = mongo.db.endings.find_one({"_id": ObjectId(ending_id)})
+
+    return render_template("ending_detail.html", ending=ending, upvote='true')
 
 
 if __name__ == "__main__":

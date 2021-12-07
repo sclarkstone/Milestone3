@@ -21,17 +21,25 @@
 
 </form>
 </div>
-{% for ending in endings %}
+
+
 <div class="row">
-    <div class="col s12">
-      <div class="card light-blue lighten-4">
-        <div class="card-content black-text">
-          <span class="card-title">{{ ending.ending_name }} ({{ ending.ending_type }} - {{ ending.genre_name }})</span>
-          <a href="{{ url_for('ending_detail', ending_id=ending._id) }}">Read more...</a>
-        </div>
+  {% for ending in endings %}
+  <div class="col s12 m4">
+    
+    <div class="card">
+      <div class="card-image">
+        <img src="{{ ending.ending_image }}" />
       </div>
+      <div class="card-content black-text">
+        <span class="card-title"><strong>{{ ending.ending_name }}</strong></span>          
+        ({{ ending.ending_type }} - {{ ending.genre_name }})
+      <p><a class="card-link" href="{{ url_for('ending_detail', ending_id=ending._id) }}">Read Better Ending...</a></p> 
+      </div>
+            
     </div>
   </div>
   {% endfor %}
+</div>
 
 {% endblock %}

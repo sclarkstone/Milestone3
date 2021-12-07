@@ -1,28 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
-<h4 class="light-blue-text text-darken-4 center-align">Have you ever watched a film or tv series? </h4>
-<h4 class="light-blue-text text-darken-4 center-align"> Were you disappointed with the ending?</h4>
+<h4 class="light-blue-text text-darken-4 center-align">Have you been disappointed with the ending of a film or series? </h4>
 <p class="center-align">Ever thought you could write a better ending?</p>
 <p class="center-align">Well now is your chance! write and submit your better ending and see if people prefer it.</p>
 <p class="center-align">Check out the most recent and highest rated better endings or have a <a href="{{ url_for('endings') }}">Browse</a> through all the better endings.</p>
 
   
 <div class="row">
-  <h4>Top 3 - recently added</h4>
+  <h4>Top 3 - Recently added</h4>
   {% for ending in endings %}
   <div class="col s12 m4">
     
-    <div class="card light-blue lighten-4">
+    <div class="card">
       <div class="card-image">
         <img src="{{ ending.ending_image }}" />
       </div>
       <div class="card-content black-text">
         <span class="card-title"><strong>{{ ending.ending_name }}</strong></span>          
         ({{ ending.ending_type }} - {{ ending.genre_name }})
-            </div>
-            <div class="card-action">
-              <a href="{{ url_for('ending_detail', ending_id=ending._id) }}">Read more...</a>
-</div>
+      <p><a class="card-link" href="{{ url_for('ending_detail', ending_id=ending._id) }}">Read Better Ending...</a></p> 
+      </div>
+            
     </div>
   </div>
   {% endfor %}
@@ -34,17 +32,16 @@
   {% for rating in ratings %}
   <div class="col s12 m4">
     
-    <div class="card light-blue lighten-4">
+    <div class="card">
       <div class="card-image">
         <img src="{{ rating.ending_image }}" />
       </div>
       <div class="card-content black-text">
         <span class="card-title"><strong>{{ rating.ending_name }}</strong></span>          
         ({{ rating.ending_type }} - {{ rating.genre_name }})
+        <p><a class="card-link" href="{{ url_for('ending_detail', ending_id=rating._id) }}">Read Better Ending...</a></p>
             </div>
-            <div class="card-action">
-              <a href="{{ url_for('ending_detail', ending_id=rating._id) }}">Read more...</a>
-</div>
+            
     </div>
   </div>
   {% endfor %}

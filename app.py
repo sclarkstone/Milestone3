@@ -4,6 +4,7 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from werkzeug import utils
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 if os.path.exists("env.py"):
@@ -19,13 +20,19 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+def is_logged_in():
+  if session and session["user"]:
+    return True
+  else:
+    return False
+
+
 @app.route("/")
-@app.route("/get_endings")
 def get_endings():
     endings = mongo.db.endings.find().sort("ending_date", -1).limit(3)
     ratings = mongo.db.endings.find().sort("rating", -1).limit(3)
 
-    return render_template("endings.html", endings=endings, ratings=ratings)
+    return render_template("home.html", endings=endings, ratings=ratings)
 
 
 @app.route("/search", methods=["GET", "POST"])
@@ -33,14 +40,18 @@ def search():
     query = request.form.get("query")
     endings = list(mongo.db.endings.find({"$text": {"$search": query}}))
 
-    return render_template("endings_all.html", endings=endings)
+    return render_template("endings.html", endings=endings)
 
 
-@app.route("/ending_detail/<ending_id>")
+@app.route("/ending/<ending_id>/view")
 def ending_detail(ending_id):
+  ending = None
+  try:
     ending = mongo.db.endings.find_one({"_id": ObjectId(ending_id)})
+  except:
+    return redirect(url_for("home"))
+  return render_template("view.html", ending=ending)
 
-    return render_template("ending_detail.html", ending=ending)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -64,7 +75,7 @@ def register():
         session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
         return redirect(url_for("profile", username=session["user"]))
-    
+
     return render_template("register.html")
 
 
@@ -97,25 +108,24 @@ def login():
     return render_template("login.html")
 
 
-@app.route("/profile/<username>", methods=["GET", "POST"])
-def profile(username):
+@app.route("/profile", methods=["GET", "POST"])
+def profile():
     # grab the session user's username from db
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
+    if not is_logged_in():
+      return redirect(url_for("login"))
+
+    user = mongo.db.users.find_one({"username": session["user"]})
+    username = user["username"]
 
     endings = mongo.db.endings.find({"created_by": username})
-
-    if session["user"]:
-        return render_template("profile.html", username=username, endings=endings)
-
-    return redirect(url_for("login"))
+    return render_template("profile.html", username=username, endings=endings)
 
 
-@app.route("/endings_all")
-def endings_all():
+
+@app.route("/endings")
+def endings():
     endings = mongo.db.endings.find()
-
-    return render_template("endings_all.html", endings=endings)
+    return render_template("endings.html", endings=endings)
 
 
 @app.route("/logout")
@@ -126,63 +136,82 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/add_ending", methods=["GET", "POST"])
+@app.route("/ending/add", methods=["GET", "POST"])
 def add_ending():
-    if request.method == "POST":
-        ending = {
-            "genre_name": request.form.get("genre_name"),
-            "ending_type": request.form.get("type_name"),
-            "ending_name": request.form.get("ending_name"),
-            "ending_description": request.form.get("ending_description"),
-            "ending_date": datetime.now(),
-            "created_by": session["user"],
-            "rated": 0
-        }
-        mongo.db.endings.insert_one(ending)
-        flash("Ending Successfully Added")
-        return redirect(url_for("get_endings"))
+  if not is_logged_in():
+    return redirect(url_for('login'))
 
-    genres = mongo.db.genres.find().sort("genre_name", 1)
-    types = mongo.db.types.find().sort("type_name", 1)
-    return render_template("add_ending.html", genres=genres, types=types)
-
-
-@app.route("/edit_ending/<ending_id>", methods=["GET", "POST"])
-def edit_ending(ending_id):
-    if request.method == "POST":
-        submit = {
-            "genre_name": request.form.get("genre_name"),
-            "ending_type": request.form.get("type_name"),
-            "ending_name": request.form.get("ending_name"),
-            "ending_description": request.form.get("ending_description"),
-            "ending_date": datetime.now(),
-            "created_by": session["user"]
-        }
-        mongo.db.endings.update({"_id": ObjectId(ending_id)}, submit)
-        flash("Ending Successfully Updated")
-
-    ending = mongo.db.endings.find_one({"_id": ObjectId(ending_id)})
-    genres = mongo.db.genres.find().sort("genres_name", 1)
-    types = mongo.db.types.find().sort("type_name", 1)
-    return render_template("edit_ending.html", ending=ending, types=types, genres=genres)
-
-
-@app.route("/delete_ending/<ending_id>")
-def delete_ending(ending_id):
-    mongo.db.endings.remove({"_id": ObjectId(ending_id)})
-    flash("Ending Successfully Deleted")
+  if request.method == "POST":
+    ending = {
+        "genre_name": request.form.get("genre_name"),
+        "ending_type": request.form.get("type_name"),
+        "ending_name": request.form.get("ending_name"),
+        "ending_image": request.form.get("ending_image"),
+        "ending_description": request.form.get("ending_description"),
+        "ending_date": datetime.now(),
+        "created_by": session["user"],
+        "rated": 0
+    }
+    mongo.db.endings.insert_one(ending)
+    flash("Ending Successfully Added")
     return redirect(url_for("get_endings"))
 
+  genres = mongo.db.genres.find().sort("genre_name", 1)
+  types = mongo.db.types.find().sort("type_name", 1)
+  return render_template("add.html", genres=genres, types=types)
 
-@app.route("/upvote_ending/<ending_id>", methods=["GET", "POST"])
+
+@app.route("/ending/<ending_id>/edit", methods=["GET", "POST"])
+def edit_ending(ending_id):
+  if not is_logged_in():
+    return redirect(url_for('login'))
+
+  ending = None
+  try:
+    ending = mongo.db.endings.find_one({"_id": ObjectId(ending_id)})
+  except:
+    flash("Invalid ID")
+    return redirect(url_for("home"))
+  if request.method == "POST":
+      if ending["created_by"] != session["user"]:
+        flash('Unauthorized')
+        return redirect(url_for("home"))
+
+      submit = {
+          "genre_name": request.form.get("genre_name"),
+          "type": request.form.get("type_name"),
+          "name": request.form.get("ending_name"),
+          "description": request.form.get("ending_description"),
+          "updated_at": datetime.now(),
+          "created_by": session["user"]
+      }
+      mongo.db.endings.update({"_id": ObjectId(ending_id)}, submit)
+      flash("Ending Successfully Updated")
+
+  genres = mongo.db.genres.find().sort("genres_name", 1)
+  types = mongo.db.types.find().sort("type_name", 1)
+  return render_template("edit.html", ending=ending, types=types, genres=genres)
+
+
+@app.route("/ending/<ending_id>/delete")
+def delete_ending(ending_id):
+  # First check if logged in
+   # Check if logged in user is equal to created_by user
+    #Check for error as id can be tampered
+    mongo.db.endings.remove({"_id": ObjectId(ending_id)})
+    flash("Ending Successfully Deleted")
+    return redirect(url_for("endings"))
+
+
+@app.route("/ending/<ending_id>/upvote", methods=["GET", "POST"])
 def upvote_ending(ending_id):
+    #Check for logged in and ID tampering
     if request.method == "POST":
         mongo.db.endings.update({'_id': ObjectId(ending_id)}, {'$inc': {'rated': 1}})
-
         flash("Upvote Successful")
         ending = mongo.db.endings.find_one({"_id": ObjectId(ending_id)})
 
-    return render_template("ending_detail.html", ending=ending, upvote='true')
+    return render_template("view.html", ending=ending, upvote='true')
 
 
 if __name__ == "__main__":

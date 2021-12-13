@@ -185,7 +185,7 @@ def edit_ending(ending_id):
           "updated_at": datetime.now(),
           "created_by": session["user"]
       }
-      mongo.db.endings.update({"_id": ObjectId(ending_id)}, submit)
+      mongo.db.endings.update_one({"_id": ObjectId(ending_id)}, {"$set": submit})
       flash("Ending Successfully Updated")
 
   genres = mongo.db.genres.find().sort("genres_name", 1)
@@ -198,7 +198,7 @@ def delete_ending(ending_id):
   # First check if logged in
    # Check if logged in user is equal to created_by user
     #Check for error as id can be tampered
-    mongo.db.endings.remove({"_id": ObjectId(ending_id)})
+    mongo.db.endings.delete_one({"_id": ObjectId(ending_id)})
     flash("Ending Successfully Deleted")
     return redirect(url_for("endings"))
 
@@ -239,7 +239,7 @@ def edit_genre(genre_id):
         submit = {
             "genre_name": request.form.get("genre_name")
         }
-        mongo.db.genres.update({"_id": ObjectId(genre_id)}, submit)
+        mongo.db.genres.update_one({"_id": ObjectId(genre_id)}, {"$set": submit})
         flash("Genre Successfully Updated")
         return redirect(url_for("get_genres"))
 
@@ -249,9 +249,9 @@ def edit_genre(genre_id):
 
 @app.route("/delete_genre/<genre_id>")
 def delete_genre(genre_id):
-    mongo.db.genres.remove({"_id": ObjectId(genre_id)})
+    mongo.db.genres.delete_one({"_id": ObjectId(genre_id)})
     flash("Genre Successfully Deleted")
-    return redirect(url_for("get_genre"))
+    return redirect(url_for("get_genres"))
 
 
 if __name__ == "__main__":

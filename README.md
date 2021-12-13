@@ -43,4 +43,5 @@ Re-create the workspace by clicking on the Gitpod button from your repository.
 issues
 
 
-When edit or delete - "TypeError: 'Collection' object is not callable. If you meant to call the 'update' method on a 'Collection' object it is failing because no such method exists."
+When edit or delete - "TypeError: 'Collection' object is not callable. If you meant to call the 'update' method on a 'Collection' object it is failing because no such method exists." 
+got tutor suupor to fix. remove is not a normal Mongo command, delete_one. and mongo.db.genres.update({"_id": ObjectId(genre_id)}, submit) becomes  mongo.db.genres.update_one({"_id": ObjectId(genre_id)}, {"$set": submit})

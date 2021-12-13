@@ -45,3 +45,9 @@ issues
 
 When edit or delete - "TypeError: 'Collection' object is not callable. If you meant to call the 'update' method on a 'Collection' object it is failing because no such method exists." 
 got tutor suupor to fix. remove is not a normal Mongo command, delete_one. and mongo.db.genres.update({"_id": ObjectId(genre_id)}, submit) becomes  mongo.db.genres.update_one({"_id": ObjectId(genre_id)}, {"$set": submit})
+
+//--------------------------
+top 3 highest rated not working
+    ratings = mongo.db.endings.find().sort("ratings", -1).limit(3) should be
+        ratings = mongo.db.endings.find().sort("rated", -1).limit(3)
+

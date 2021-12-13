@@ -30,7 +30,7 @@ def is_logged_in():
 @app.route("/")
 def get_endings():
     endings = mongo.db.endings.find().sort("ending_date", -1).limit(3)
-    ratings = mongo.db.endings.find().sort("rating", -1).limit(3)
+    ratings = mongo.db.endings.find().sort("rated", -1).limit(3)
 
     return render_template("home.html", endings=endings, ratings=ratings)
 

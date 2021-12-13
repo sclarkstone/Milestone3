@@ -118,7 +118,8 @@ def profile():
     username = user["username"]
 
     endings = mongo.db.endings.find({"created_by": username})
-    return render_template("profile.html", username=username, endings=endings)
+    item_count = mongo.db.endings.count_documents({"created_by": username})
+    return render_template("profile.html", username=username, endings=endings, item_count=item_count)
 
 
 
@@ -207,7 +208,7 @@ def delete_ending(ending_id):
 def upvote_ending(ending_id):
     #Check for logged in and ID tampering
     if request.method == "POST":
-        mongo.db.endings.update({'_id': ObjectId(ending_id)}, {'$inc': {'rated': 1}})
+        mongo.db.endings.update_one({'_id': ObjectId(ending_id)}, {'$inc': {'rated': 1}})
         flash("Upvote Successful")
         ending = mongo.db.endings.find_one({"_id": ObjectId(ending_id)})
 

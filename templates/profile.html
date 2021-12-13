@@ -6,9 +6,11 @@
             <div class="card-panel">
                 <h3 class="center-align light-blue-text text-darken-4">
                     {{ username }}'s Profile
-                </h3>
+                  </h3>
+                  {% if item_count == 0 %}
+<p>Create your first <a href="{{ url_for('add_ending') }}">Better Ending</a> now.</p>
+{% else %}
 <p>Here are all your submitted better endings. View, edit and delete them here.</p>
-            
 
                 <table>
                     <thead>
@@ -35,5 +37,5 @@
             </div>
         </div>
     </div>
-
+    {% endif %}
 {% endblock %}

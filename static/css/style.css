@@ -31,3 +31,7 @@ body {
 
 
   /* card template */
+  .preview{
+    max-height: 200px;
+    overflow: hidden;
+}

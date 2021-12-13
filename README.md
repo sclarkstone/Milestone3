@@ -36,3 +36,11 @@ Visit https://lechien73.github.io/reqfix/ and paste in the corrupted requirement
 In the results panel, copy the cleaned requirements and paste them into your requirements.txt file back in Gitpod and save.
 Add, commit and push everything to your GitHub repository.
 Re-create the workspace by clicking on the Gitpod button from your repository.
+
+
+
+//------------------
+issues
+
+
+When edit or delete - "TypeError: 'Collection' object is not callable. If you meant to call the 'update' method on a 'Collection' object it is failing because no such method exists."

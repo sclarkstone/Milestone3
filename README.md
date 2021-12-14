@@ -1,3 +1,14 @@
+# BETTER ENDINGS
+
+The live link can be found here - [site link](https://milestone-3-project-sam.herokuapp.com/)
+
+This site is targeted at people who have watched filmes or tv series and that have been disappointed with the endings. It offers the opportunity for users to write an alternative ending (a Better Ending). All the Better Endings created can be read and upvoted by users to give the author positive feedback.
+
+
+
+
+
+//----------------------------------------
 set up
 
 set up mongodb

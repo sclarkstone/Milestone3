@@ -4,7 +4,81 @@ The live link can be found here - [site link](https://milestone-3-project-sam.he
 
 This site is targeted at people who have watched filmes or tv series and that have been disappointed with the endings. It offers the opportunity for users to write an alternative ending (a Better Ending). All the Better Endings created can be read and upvoted by users to give the author positive feedback.
 
+![Mock up screen shots](static/images/ScreenMockUpsFinal.png)
 
+## User experience (UX)
+
+### Strategy
+* Defining the goals - Due to the global pandemic of Covid, over the last few years the number of new release films and tv series has been significantly reduced. This has lead to an increase in older films and tv series being streamed and re watched. This has brought back reminders of the disappointment some of these exisiting films and tv series brought in regards to the endings. Where a perfectly good or even great film can be overall let down by the ending. With demand for streaming services increased because large parts of Europe have been self-isolating or working from home due to Covid.   
+* what is the idea? From this research i narrowed down my idea to having a site that could allow users to write an alternatate ending (a Better Ending) and allow other users to read and upvote, providing positive feedback to the author.
+* who is the target audience? My target audience would be all people with an interest in films and tv series. From my reserach this was an ever expanding pool of potential users.
+* why should it be created? Offering users the possibility to re write the ending, giving emotional closure to an otherwise frustating or disappointed feelings given from the original ending will make for a more peaceful mindset. It could be seen as a well-being exercise like meditation. 
+
+### Scope
+* features and functions - several different ways to view all of the submitted Better Endings (top 3 most recently, top 3 highest rated and a search functionality to search all titles.).
+* content requirements - simple but effective. 
+
+#### User stories
+* Objective (author) - what does the user want to accomplish? 
+    * To write, edit and delete all the Better Endings they produced. Also, to view all users Better Endings and to upvote those that they feel are better then the original endings.
+* Functional (author) - what does the user need to do to accomplish the objective? whats involved?
+    * Authors log in and have instant access to of their own Better Endings. 
+    * They can also search or browse other authors Better Endings to Upvote them.
+
+* Objective (user) - what does the user want to accomplish? 
+    * To view all users Better Endings and to upvote those that they feel are better then the original endings.
+* Functional (user) - what does the user need to do to accomplish the objective? whats involved?
+    * Users log in and search or browse Better Endings to Upvote them. 
+
+* Objective (viewer) - what does the user want to accomplish? 
+    * To view all Better Endings.
+* Functional (viewer) - what does the user need to do to accomplish the objective? whats involved?
+    * Simply visit the site. No effort involved. Minimal clicks to get to content. 
+
+* Non-functional - what contraints does the site have to perform in?
+    * ????? 
+
+### Structure
+* how will content be organised and presented - site map
+    * 3 pages for users - login, register and profile
+    * 1 page for admin - manage genres
+    * 4 pages for content - home, search, view and edit
+
+### Skeleton
+![Mock up wireframe](static/images/Milestone3wireframeMockup.png)
+
+
+### Surface
+* Following the C.R.A.P (consistancy, repetition, alignment and proximity) design methodology the pages will all have the same nav bar, footer and color scheme. This will help create a positive user experience. 
+
+## Design and features
+
+### Home page
+
+* Navigation bar
+
+    * Featured on all pages, the fully responsive bar includes Logo (links to homepage). The links available are then customised depending on which type of user is viewing. If they are not logged in and are just viewing content then the links available are Home, Log in and register. If they are logged in as Admin then the links available are Home, Profile, New Ending, Manage Genres and Log Out. All other logged in users have the following links available; Home, Porfile, New Ending and Log Out.
+    * This section will allow the user to easily navigate between pages without having to revert back to the previous page via the browsers back button.
+    * The navigation bar uses a collapsed 'hamburger' style for the link on mobile devices and smaller screen sizes. 
+
+![Large screen nav bar - Admin logged in](static/images/NavAdmin.png)
+![Mobile screen nav bar](static/images/NavMobileScreen.png)
+
+
+* Content
+
+    * The home page begins with a larger header which immediatly gives the context of the site.
+    * Further details then provide a link so that a user can browse all the site content.
+    * A row of cards display the top 3 - most recently added endings into the database.This is dynamic and will always display the most recent from all the records in the database.
+    * A further row of cards display the top 3 - highest rated endings. This is dynamic and will always display the highest rated from all the records in the database. 
+    * The header bottom is responsive to screen size and will adjust accordingly by having the cards side by side on a larger screen size. On a smaller screen size the cards will appear below one another.
+
+![Large screen main content](static/images/HomeLargeScreen.png)
+![Mobile screen main content](static/images/HomeMobileScreen.png)
+
+* Footer
+
+    * The footer section is repeated across all pages for consistancy so the user can become comfortable with the layout no matter which page they are on.
 
 
 

@@ -93,9 +93,10 @@ This site is targeted at people who have watched filmes or tv series and that ha
 
 ### Validator testing
 
-* HTML using [W3C validator](https://github.com/sclarkstone/Milestone3/blob/main/templates/home.html) - home.html
+* HTML using [W3C validator](https://validator.w3.org/nu/?doc=http%3A%2F%2Fmilestone-3-project-sam.herokuapp.com%2F) - home.html
 
     * 'Error: Element link is missing required attribute href.' - incorrect link used, i must have copy and pasted a link incorrectly from my milestone2 project for bootstrap instead of font awesome. Once the link was corrected the error was resolved.
+    * 'Warning: Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections.' - amended the flash messages to sit inside a div rather then section. this corrected the warning.
 
     * After correcting the above errors and re running the w3c validator the following message came 'Document checking completed. No errors or warnings to show'.
 

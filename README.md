@@ -80,7 +80,35 @@ This site is targeted at people who have watched filmes or tv series and that ha
 
     * The footer section is repeated across all pages for consistancy so the user can become comfortable with the layout no matter which page they are on.
 
+//---------------------------------
+## Testing
 
+* [Chrome developer tools](https://developer.chrome.com/docs/devtools/) on the browser was used to see any errors on the pages.
+
+    * Got the error '404 - unable to load favicon.ico'. The pathway on the Base.html template was incorrect. Once the correct pathway link was used this corrected the issue. 
+
+
+* [Chrome developer tools](https://developer.chrome.com/docs/devtools/) device toggle toolbar was utilised to view the site via emulators of different screen sizes and devices.
+
+
+### Validator testing
+
+* HTML using [W3C validator](https://github.com/sclarkstone/Milestone3/blob/main/templates/home.html) - home.html
+
+    * 'Error: Element link is missing required attribute href.' - incorrect link used, i must have copy and pasted a link incorrectly from my milestone2 project for bootstrap instead of font awesome. Once the link was corrected the error was resolved.
+
+    * After correcting the above errors and re running the w3c validator the following message came 'Document checking completed. No errors or warnings to show'.
+
+
+testing
+
+http://pep8online.com/
+E501:2:80:line too long (84 > 79 characters)
+E501:122:80:line too long (81 > 79 characters)
+E501:189:80:line too long (83 > 79 characters)
+E501:194:80:line too long (82 > 79 characters)
+E501:241:80:line too long (81 > 79 characters)
+E501:257:80:line too long (84 > 79 characters)
 
 //----------------------------------------
 set up

@@ -152,10 +152,41 @@ Cards|responsive layout| Cards side by side on desktop and tablet screen sizes. 
 * JavaScript using JSHint - index.html
     * 'Missing semicolon.' after reviewing the code, the missing semicolon was found to be on line 122 (where the open weathermap api data is being converted to JSON) After correcting this i then re run the validator and the issue was resolved.
 
+### First mentor review
+After the first review with my mentor some recommendations for improvements were made, they are detailed below.
+
+* Where I only had a couple of pages my mentor helped me to put a site map together of the pages that would be needed;
+     * 1) Home page (/home or /) -> Featured endings like Top Rated, Recently added, etc
+    * 2) Endings List page (/endings) -> List of all endings, with search bar and filters
+     * 3) Ending detail page (/ending/<ending_id>/view) -> More details about the ending. Also have feature to give ratings only for logged in users.
+     * 4) Add Ending page (/ending/add) -> Form to add ending
+     * 5) Edit ending page (/ending/<ending_id>/edit) -> Form to edit ending
+     * 6) Login (/login)
+     * 7) Signup (/signup)
+     * 8) Add review of POST type (/ending/<ending_id>/review/add)
+     * 9) Edit review of POST type (/ending/<ending_id>/review/edit)
+     * 10) Delete ending page (/ending/<ending_id>/delete) -> Form to delete ending, only admin or users who created should be able to delete it
+
+
+### Second mentor review
+After the second review with my mentor some recommendations for improvements were made. I carried out these recommendations, they are detailed below.
+
+* Padding around the Nav bar to increase its size.
+* Make the header sentence shorter and increase size from a h3 to h1.
+* Add an image URL to the new ending form and show images on home, search and details pages.
+* Use side by side cards to show each ending rather then a table display on home and search pages.
+* Add a is_logged_in function to do a check first for pages that required it. If not logged in send to login page.
+
+### Bugs
+
+* On the add new ending page i was unable to click or tab to the ending_image field. On inspection i found that i had ending_name in the label for. Once i corrected this to ending_image it worked as expected.
+* When editing or deleting i got the error - "TypeError: 'Collection' object is not callable. If you meant to call the 'update' method on a 'Collection' object it is failing because no such method exists." I ended up getting tutor suupor to fix this. it turns out that remove is not a normal Mongo command, delete_one was needed instead and mongo.db.genres.update({"_id": ObjectId(genre_id)}, submit) needed to be  mongo.db.genres.update_one({"_id": ObjectId(genre_id)}, {"$set": submit}). 
+* top 3 highest rated not working, it was not showing the top 3 rated. On inspection i found that in the line 'ratings = mongo.db.endings.find().sort("ratings", -1).limit(3)' I had put the incorrect name of 'ratings' but to match the table field it needed to be 'rated'.
+
 
 
 //----------------------------------------
-set up
+## Set up and Deployment
 
 set up mongodb
 randomkeygen for secrete code
@@ -195,16 +226,17 @@ Add, commit and push everything to your GitHub repository.
 Re-create the workspace by clicking on the Gitpod button from your repository.
 
 
+## Credits
 
-//------------------
-issues
+### Layout
+* github - code institute/gitpod-full-template
 
+* [Materialize V1.0.0](https://materializecss.com/getting-started.html)
 
-When edit or delete - "TypeError: 'Collection' object is not callable. If you meant to call the 'update' method on a 'Collection' object it is failing because no such method exists." 
-got tutor suupor to fix. remove is not a normal Mongo command, delete_one. and mongo.db.genres.update({"_id": ObjectId(genre_id)}, submit) becomes  mongo.db.genres.update_one({"_id": ObjectId(genre_id)}, {"$set": submit})
-
-//--------------------------
-top 3 highest rated not working
-    ratings = mongo.db.endings.find().sort("ratings", -1).limit(3) should be
-        ratings = mongo.db.endings.find().sort("rated", -1).limit(3)
-
+    * navbar
+    * grid layout with rows and columns
+    * form controls
+    * responsivness and styling
+    * Cards
+    
+* [Code institute](https://learn.codeinstitute.net/) course material.

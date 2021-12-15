@@ -128,14 +128,12 @@ The UAT was carried out on desktop, tablet and mobile screen sizes. The UAT was 
 Test | Expected Outcome | Actual outcome|status
 -----|------------------|----------------|--------
 Images|All images appear, sized correctly with alt tags|Card images all loaded correctly| Pass
-fonts|fonts use specified google fonts| Oswald and Lanto fonts load|Pass
-API|Local weather|Weather is displayed for the selected city|Pass
+fonts|fonts use specified google fonts| Roboto and Lanto fonts load|Pass
 Nav bar|responsive navbar with varying screen sizes| Nav bar is full width with visable logo text and page links on desktop and tablet screen. On mobile screen sizes it is full width with a collapsed 'hamburger' toggle hiding the page links until pressed.|Pass 
-links|internal link to remain in current window and external links to open in new tab| National rail did not open in new window which is a fail. 'Map' link opens internal link in same window to map page.|Fail
-links - second attempt|After correcting the quote in front of the target attribute in the href the external link should open in a new tab| National rail opened in new window.|Pass
-Dynamic links|External links to open in new tab with dynamic city name as url parameter| VistEngland and Airbnb open associated sites in a new tab with the correct url parameter.|Pass
-Header bottom|responsive layout| form and city detail text side by side on desktop and tablet screen sizes. City detail text below form on mobile screen sizes.|Pass
-interactivity|user action which provides feedback|'choose my destination' button provides a random city name from array and local weather. If a criteria is selected then the array is filtered by type before a random city name is selected and displayed. |Pass
+links|internal link to remain in current window and external links to open in new tab| 'Browse' link opens internal link in same window to endings page.|Pass
+Dynamic links|Internal links to open in same tab with dynamic ending id as url parameter| Card links all open correct endings page with ending id.|Pass
+Cards|responsive layout| Cards side by side on desktop and tablet screen sizes. Cards below one another on mobile screen sizes.|Pass
+
 
 ### Validator testing
 

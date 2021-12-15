@@ -119,10 +119,11 @@ def profile():
     username = user["username"]
 
     endings = mongo.db.endings.find({"created_by": username})
+    admin_endings = mongo.db.endings.find()
     item_count = mongo.db.endings.count_documents({"created_by": username})
     return render_template(
         "profile.html", username=username, endings=endings,
-        item_count=item_count)
+        item_count=item_count, admin_endings=admin_endings)
 
 
 @app.route("/endings")

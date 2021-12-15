@@ -1,41 +1,73 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <div class="row">
-        <div class="col s12 m8 offset-m2">
-            <div class="card-panel">
-                <h3 class="center-align light-blue-text text-darken-4">
-                    {{ username }}'s Profile
-                  </h3>
-                  {% if item_count == 0 %}
-<p>Create your first <a href="{{ url_for('add_ending') }}">Better Ending</a> now.</p>
-{% else %}
-<p>Here are all your submitted better endings. View, edit and delete them here.</p>
+<div class="row">
+  <div class="col s12 m8 offset-m2">
+    <div class="card-panel">
+      <h3 class="center-align light-blue-text text-darken-4">
+        {{ username }}'s Profile
+      </h3>
+      {% if item_count == 0 %}
+      <p>Create your first <a href="{{ url_for('add_ending') }}">Better Ending</a> now.</p>
+      
+      {% else %}
+        {% if session.user|lower == "admin"|lower %}
+        <p>Here are all the submitted better endings. View, edit and delete them here.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Actions</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+  
+          <tbody>
+            {% for admin_ending in admin_endings %}
+            <tr>
+              <td>{{ admin_ending.ending_name }}</td>
+              <td><a href="{{ url_for('ending_detail', ending_id=admin_ending._id) }}"
+                  class="btn-small light-green lighten-1">View</a></td>
+              <td><a href="{{ url_for('edit_ending', ending_id=admin_ending._id) }}"
+                  class="btn-small light-blue lighten-1">Edit</a></td>
+              <td><a href="{{ url_for('delete_ending', ending_id=admin_ending._id) }}"
+                  class="btn-small red lighten-1">Delete</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <p>Here are all your submitted better endings. View, edit and delete them here.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Actions</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+  
+          <tbody>
+            {% for ending in endings %}
+            <tr>
+              <td>{{ ending.ending_name }}</td>
+              <td><a href="{{ url_for('ending_detail', ending_id=ending._id) }}"
+                  class="btn-small light-green lighten-1">View</a></td>
+              <td><a href="{{ url_for('edit_ending', ending_id=ending._id) }}"
+                  class="btn-small light-blue lighten-1">Edit</a></td>
+              <td><a href="{{ url_for('delete_ending', ending_id=ending._id) }}"
+                  class="btn-small red lighten-1">Delete</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% endif %}
+      
 
-                <table>
-                    <thead>
-                      <tr>
-                          <th>Title</th>
-                          <th>Actions</th>
-                          <th></th>
-                          <th></th>
-                      </tr>
-                    </thead>
-            
-                    <tbody>
-                        {% for ending in endings %}
-                      <tr> 
-                        <td>{{ ending.ending_name }}</td>
-                        <td><a href="{{ url_for('ending_detail', ending_id=ending._id) }}" class="btn-small light-green lighten-1">View</a></td>
-                        <td><a href="{{ url_for('edit_ending', ending_id=ending._id) }}" class="btn-small light-blue lighten-1">Edit</a></td>
-                        <td><a href="{{ url_for('delete_ending', ending_id=ending._id) }}" class="btn-small red lighten-1">Delete</a></td>
-                      </tr>
-                      {% endfor %}
-                    </tbody>
-                  </table>
-         
-            </div>
-        </div>
     </div>
-    {% endif %}
+  </div>
+</div>
+{% endif %}
 {% endblock %}

@@ -1,5 +1,7 @@
 import os
-from flask import Flask, flash, render_template, redirect, request, session, url_for
+from flask import (
+    Flask, flash, render_template,
+    redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug import utils
@@ -119,8 +121,8 @@ def profile():
     endings = mongo.db.endings.find({"created_by": username})
     item_count = mongo.db.endings.count_documents({"created_by": username})
     return render_template(
-        "profile.html", username=username, endings=endings, item_count=item_count
-    )
+        "profile.html", username=username, endings=endings,
+        item_count=item_count)
 
 
 @app.route("/endings")
@@ -186,12 +188,16 @@ def edit_ending(ending_id):
             "updated_at": datetime.now(),
             "created_by": session["user"],
         }
-        mongo.db.endings.update_one({"_id": ObjectId(ending_id)}, {"$set": submit})
+        mongo.db.endings.update_one(
+            {"_id": ObjectId(ending_id)},
+            {"$set": submit})
         flash("Ending Successfully Updated")
 
     genres = mongo.db.genres.find().sort("genres_name", 1)
     types = mongo.db.types.find().sort("type_name", 1)
-    return render_template("edit.html", ending=ending, types=types, genres=genres)
+    return render_template(
+        "edit.html", ending=ending, types=types,
+        genres=genres)
 
 
 @app.route("/ending/<ending_id>/delete")
@@ -209,10 +215,9 @@ def delete_ending(ending_id):
 @app.route("/ending/<ending_id>/upvote", methods=["GET", "POST"])
 def upvote_ending(ending_id):
     # Check for logged in and ID tampering
-     # grab the session user's username from db
     if not is_logged_in():
         return redirect(url_for("login"))
-        
+
     if request.method == "POST":
         mongo.db.endings.update_one(
             {"_id": ObjectId(ending_id)}, {"$inc": {"rated": 1}}
@@ -244,7 +249,9 @@ def add_genre():
 def edit_genre(genre_id):
     if request.method == "POST":
         submit = {"genre_name": request.form.get("genre_name")}
-        mongo.db.genres.update_one({"_id": ObjectId(genre_id)}, {"$set": submit})
+        mongo.db.genres.update_one(
+            {"_id": ObjectId(genre_id)},
+            {"$set": submit})
         flash("Genre Successfully Updated")
         return redirect(url_for("get_genres"))
 
@@ -260,4 +267,6 @@ def delete_genre(genre_id):
 
 
 if __name__ == "__main__":
-    app.run(host=os.environ.get("IP"), port=int(os.environ.get("PORT")), debug=True)
+    app.run(
+        host=os.environ.get("IP"), port=int(os.environ.get("PORT")),
+        debug=True)

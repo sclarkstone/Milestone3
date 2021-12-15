@@ -19,24 +19,36 @@ This site is targeted at people who have watched filmes or tv series and that ha
 * content requirements - simple but effective. 
 
 #### User stories
-* Objective (author) - what does the user want to accomplish? 
-    * To write, edit and delete all the Better Endings they produced. Also, to view all users Better Endings and to upvote those that they feel are better then the original endings.
-* Functional (author) - what does the user need to do to accomplish the objective? whats involved?
-    * Authors log in and have instant access to of their own Better Endings. 
+
+#### Admin
+* Objective - what does the user want to accomplish? 
+    * To manage (create, view, edit and delete) genres. To write, edit and delete all the Better Endings from any user. Also, to view all users Better Endings and to upvote those that they feel are better then the original endings.
+* Functional - what does the user need to do to accomplish the objective? whats involved?
+    * Admin can log in and have instant access to manage (view, edit and delete) all Better Endings.
+    * They can create new Better Endings. 
     * They can also search or browse other authors Better Endings to Upvote them.
 
-* Objective (user) - what does the user want to accomplish? 
+#### Author
+* Objective - what does the user want to accomplish? 
+    * To write, edit and delete all the Better Endings they produced. Also, to view all users Better Endings and to upvote those that they feel are better then the original endings.
+* Functional - what does the user need to do to accomplish the objective? whats involved?
+    * Authors log in and have instant access to manage (view, edit and delete) their own Better Endings. 
+    * They can create new Better Endings.
+    * They can also search or browse other authors Better Endings to Upvote them.
+
+#### Logged in user
+* Objective - what does the user want to accomplish? 
     * To view all users Better Endings and to upvote those that they feel are better then the original endings.
 * Functional (user) - what does the user need to do to accomplish the objective? whats involved?
+    * They can create new Better Endings.
     * Users log in and search or browse Better Endings to Upvote them. 
 
-* Objective (viewer) - what does the user want to accomplish? 
+#### Viewer
+* Objective - what does the user want to accomplish? 
     * To view all Better Endings.
-* Functional (viewer) - what does the user need to do to accomplish the objective? whats involved?
+* Functional - what does the user need to do to accomplish the objective? whats involved?
     * Simply visit the site. No effort involved. Minimal clicks to get to content. 
 
-* Non-functional - what contraints does the site have to perform in?
-    * ????? 
 
 ### Structure
 * how will content be organised and presented - site map
@@ -84,12 +96,46 @@ This site is targeted at people who have watched filmes or tv series and that ha
 ## Testing
 
 * [Chrome developer tools](https://developer.chrome.com/docs/devtools/) on the browser was used to see any errors on the pages.
-
     * Got the error '404 - unable to load favicon.ico'. The pathway on the Base.html template was incorrect. Once the correct pathway link was used this corrected the issue. 
+    * Got error 'net::ERR_CONNECTION_RESET'. ??????????????????????????
+    * Got error 'Uncaught ReferenceError: $ is not defined'. ?????????????????????
 
 
 * [Chrome developer tools](https://developer.chrome.com/docs/devtools/) device toggle toolbar was utilised to view the site via emulators of different screen sizes and devices.
 
+
+![Chrome Lighthouse audit results](static/images/LighthouseAudit.png)
+
+* Chrome Lighthouse audit (Chrome -> dev tools -> Lighthouse) was run to for performance, accessibility, SEO and best practices. After running the initial audit the Best Practices category only scored an amber rather then green as the rest of the categories did. The audit advised that the 'Image natural dimensions should be proportional to the display size and the pixel ratio to maximize image clarity'. After ???????????????????????????????????????????? this then resolved the issue 
+
+* JSHint was used to to detect errors and potential problems in your JavaScript code.
+
+* Python -  using [pep8online](http://pep8online.com/) - app.py
+    * E501:2:80:line too long (84 > 79 characters). Used brackets and new line with indentation to break up line. This corrected issue.
+    * E501:122:80:line too long (81 > 79 characters) . Used brackets and new line with indentation to break up line. This corrected issue.
+    * E501:189:80:line too long (83 > 79 characters). Used brackets and new line with indentation to break up line. This corrected issue.
+    * E501:194:80:line too long (82 > 79 characters). Used brackets and new line with indentation to break up line. This corrected issue.
+    * E501:241:80:line too long (81 > 79 characters). Used brackets and new line with indentation to break up line. This corrected issue.
+    * E501:257:80:line too long (84 > 79 characters). Used brackets and new line with indentation to break up line. This corrected issue.
+    * After correcting the above errors and pressing the Check again button the following message displayed 'All right'.
+
+### User Acceptance Testing
+
+The UAT was carried out on desktop, tablet and mobile screen sizes. The UAT was also caried out on Chrome, firefox and Edge. This was to ensure cross broswer and cross device compatability and to acieve a positive user experience. 
+
+#### Home page
+
+Test | Expected Outcome | Actual outcome|status
+-----|------------------|----------------|--------
+Images|All images appear, sized correctly with alt tags|Card images all loaded correctly| Pass
+fonts|fonts use specified google fonts| Oswald and Lanto fonts load|Pass
+API|Local weather|Weather is displayed for the selected city|Pass
+Nav bar|responsive navbar with varying screen sizes| Nav bar is full width with visable logo text and page links on desktop and tablet screen. On mobile screen sizes it is full width with a collapsed 'hamburger' toggle hiding the page links until pressed.|Pass 
+links|internal link to remain in current window and external links to open in new tab| National rail did not open in new window which is a fail. 'Map' link opens internal link in same window to map page.|Fail
+links - second attempt|After correcting the quote in front of the target attribute in the href the external link should open in a new tab| National rail opened in new window.|Pass
+Dynamic links|External links to open in new tab with dynamic city name as url parameter| VistEngland and Airbnb open associated sites in a new tab with the correct url parameter.|Pass
+Header bottom|responsive layout| form and city detail text side by side on desktop and tablet screen sizes. City detail text below form on mobile screen sizes.|Pass
+interactivity|user action which provides feedback|'choose my destination' button provides a random city name from array and local weather. If a criteria is selected then the array is filtered by type before a random city name is selected and displayed. |Pass
 
 ### Validator testing
 
@@ -103,15 +149,7 @@ This site is targeted at people who have watched filmes or tv series and that ha
     * After correcting the above errors and re running the w3c validator the following message came 'Document checking completed. No errors or warnings to show'.
 
 
-testing
 
-http://pep8online.com/
-E501:2:80:line too long (84 > 79 characters)
-E501:122:80:line too long (81 > 79 characters)
-E501:189:80:line too long (83 > 79 characters)
-E501:194:80:line too long (82 > 79 characters)
-E501:241:80:line too long (81 > 79 characters)
-E501:257:80:line too long (84 > 79 characters)
 
 //----------------------------------------
 set up

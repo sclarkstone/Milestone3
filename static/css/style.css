@@ -1,3 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Lato:400');
+
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+body {
+    font-family: Roboto;
+    color: #000;
+    max-width: 100%;
+}
+
+h1 {
+    font-family: Roboto;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #000;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+h2,
+h3,
+p {
+    font-family: Roboto;
+    letter-spacing: 1px;
+}
+
 /* general - for nav and buttons */
 .text-shadow {
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
@@ -17,6 +50,9 @@ nav .brand-logo {
 div.nav-wrapper{
     padding-left: 20px;
 }
+
+
+
 
 /* footer */
 body {

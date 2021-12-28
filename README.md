@@ -107,7 +107,7 @@ This site is targeted at people who have watched filmes or tv series and that ha
 
 ![Chrome Lighthouse audit results](static/images/LighthouseAudit.png)
 
-* Chrome Lighthouse audit (Chrome -> dev tools -> Lighthouse) was run to for performance, accessibility, SEO and best practices. After running the initial audit the Best Practices category only scored an amber rather then green as the rest of the categories did. The audit advised that the 'Image natural dimensions should be proportional to the display size and the pixel ratio to maximize image clarity'. After ???????????????????????????????????????????? this then resolved the issue 
+* Chrome Lighthouse audit (Chrome -> dev tools -> Lighthouse) was run to for performance, accessibility, SEO and best practices. After running the initial audit the Best Practices category only scored an amber rather then green as the rest of the categories did. The audit advised that the 'Image natural dimensions should be proportional to the display size and the pixel ratio to maximize image clarity'. After using a higher quality image for the one card that was identified this then resolved the issue. To esure this issue would not happen again i decided to add some guidance instructions to the user form where image URLs are added and to have a default image if an appropriate quality image URL could not be found by the user. 
 
 * JSHint was used to to detect errors and potential problems in your JavaScript code.
 
@@ -157,16 +157,16 @@ Cards|responsive layout| Cards side by side on desktop and tablet screen sizes. 
 After the first review with my mentor some recommendations for improvements were made, they are detailed below.
 
 * Where I only had a couple of pages my mentor helped me to put a site map together of the pages that would be needed;
-     * 1) Home page (/home or /) -> Featured endings like Top Rated, Recently added, etc
-    * 2) Endings List page (/endings) -> List of all endings, with search bar and filters
-     * 3) Ending detail page (/ending/<ending_id>/view) -> More details about the ending. Also have feature to give ratings only for logged in users.
-     * 4) Add Ending page (/ending/add) -> Form to add ending
-     * 5) Edit ending page (/ending/<ending_id>/edit) -> Form to edit ending
-     * 6) Login (/login)
-     * 7) Signup (/signup)
-     * 8) Add review of POST type (/ending/<ending_id>/review/add)
-     * 9) Edit review of POST type (/ending/<ending_id>/review/edit)
-     * 10) Delete ending page (/ending/<ending_id>/delete) -> Form to delete ending, only admin or users who created should be able to delete it
+     * Home page (/home or /) -> Featured endings like Top Rated, Recently added, etc
+    * Endings List page (/endings) -> List of all endings, with search bar and filters
+     * Ending detail page (/ending/<ending_id>/view) -> More details about the ending. Also have feature to give ratings only for logged in users.
+     * Add Ending page (/ending/add) -> Form to add ending
+     * Edit ending page (/ending/<ending_id>/edit) -> Form to edit ending
+     * Login (/login)
+     * Signup (/signup)
+     * Add review of POST type (/ending/<ending_id>/review/add)
+     * Edit review of POST type (/ending/<ending_id>/review/edit)
+     * Delete ending page (/ending/<ending_id>/delete) -> Form to delete ending, only admin or users who created should be able to delete it
 
 
 ### Second mentor review
@@ -196,8 +196,6 @@ After the third review with my mentor some recommendations for improvements were
 * top 3 highest rated not working, it was not showing the top 3 rated. On inspection i found that in the line 'ratings = mongo.db.endings.find().sort("ratings", -1).limit(3)' I had put the incorrect name of 'ratings' but to match the table field it needed to be 'rated'.
 
 
-
-//----------------------------------------
 ## Set up and Deployment
 
 * Set up mongodb collection
@@ -207,25 +205,25 @@ After the third review with my mentor some recommendations for improvements were
 * create requirements file
 * create procfile
 * set up heroku - connect via github - add config vars and initiate automatic deployment
-* install flask pymongo using command 'pip3 install flask-pymongo'
-* install dnspython using command 'pip3 install dnspython'
+* install flask pymongo using command: 'pip3 install flask-pymongo'
+* install dnspython using command: 'pip3 install dnspython'
 * update requirements file
 
 Due to a Gitpod codebase change to dependancies that was implimented after my milestone 3 project build had begun, Code institute supplied the following instructions to be applied to fix the dependancies issues from using the code institute template;
-* run pip3 freeze > unins.txt && pip3 uninstall -y -r unins.txt && rm unins.txt
+* run command: 'pip3 freeze > unins.txt && pip3 uninstall -y -r unins.txt && rm unins.txt'
 * Reinstall all the dependencies that your app needs (using pip3 install)
-* Update requirements using pip3 freeze > requirements.txt
+* Update requirements using command: 'pip3 freeze > requirements.txt'
 * Save, Add, commit, and push everything to GitHub repository.
 
 From here onwards, whenever the work space is (re)started the following two things need to be done:
-* run pip3 freeze > unins.txt && pip3 uninstall -y -r unins.txt && rm unins.txt
-* run  pip3 install -r requirements.txt second
+* run command: 'pip3 freeze > unins.txt && pip3 uninstall -y -r unins.txt && rm unins.txt'
+* run command: 'pip3 install -r requirements.txt'
 
 
 Due to a Gitpod update that was implemented after my milestone 3 project build had begun, Code institute supplied the following instructions to be apllied to fix the workspace issues;
-* From the project directory, run this command: curl https://raw.githubusercontent.com/Code-Institute-Org/gitpod-full-template/main/.gitpod.dockerfile > .gitpod.dockerfile  which will overwrite the old Dockerfile with the working one.
+* From the project directory, run this command: 'curl https://raw.githubusercontent.com/Code-Institute-Org/gitpod-full-template/main/.gitpod.dockerfile > .gitpod.dockerfile'  which will overwrite the old Dockerfile with the working one.
 * Open your corrupted requirements.txt file in Gitpod, select and copy the contents.
-* Visit ![Code institute Gitpod requitments file fix](https://lechien73.github.io/reqfix/) and paste in the corrupted requirements file. Click Submit
+* Visit [Code institute Gitpod requitments file fix](https://lechien73.github.io/reqfix/) and paste in the corrupted requirements file. Click Submit
 * In the results panel, copy the cleaned requirements and paste them into your requirements.txt file back in Gitpod and save.
 * Save, add, commit and push everything to GitHub repository.
 * Re-create the workspace by clicking on the Gitpod button from your repository.

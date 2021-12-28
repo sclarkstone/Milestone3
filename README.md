@@ -1,3 +1,4 @@
+------- DEBUG TO FALSE ------
 # BETTER ENDINGS
 
 The live link can be found here - [site link](https://milestone-3-project-sam.herokuapp.com/)
@@ -177,6 +178,17 @@ After the second review with my mentor some recommendations for improvements wer
 * Use side by side cards to show each ending rather then a table display on home and search pages.
 * Add a is_logged_in function to do a check first for pages that required it. If not logged in send to login page.
 
+
+### Third mentor review
+After the third review with my mentor some recommendations for improvements were made. I carried out these recommendations, they are detailed below.
+
+* add a fixed height to the cards and card images so they are all the same size
+* Add verticle clamp to the title on home and search pages so that if it is longer then the fixed width of the card it will not overflow.
+* Add the date and rating to the home and search cards
+* add padding to footer
+* make the image URL field on add new adding form optional and have a default image if url not added
+
+
 ### Bugs
 
 * On the add new ending page i was unable to click or tab to the ending_image field. On inspection i found that i had ending_name in the label for. Once i corrected this to ending_image it worked as expected.
@@ -188,43 +200,35 @@ After the second review with my mentor some recommendations for improvements wer
 //----------------------------------------
 ## Set up and Deployment
 
-set up mongodb
-randomkeygen for secrete code
-create env file
-create .gitignore file
-create requirements file create procfile
-set up heroku - connect via github - add config vars - automatic deployment
-install flask pymongo
-install dnspython
-update requirements file
+* Set up mongodb collection
+* randomkeygen for secrete code
+* create env file
+* create .gitignore file
+* create requirements file
+* create procfile
+* set up heroku - connect via github - add config vars and initiate automatic deployment
+* install flask pymongo using command 'pip3 install flask-pymongo'
+* install dnspython using command 'pip3 install dnspython'
+* update requirements file
+
+Due to a Gitpod codebase change to dependancies that was implimented after my milestone 3 project build had begun, Code institute supplied the following instructions to be applied to fix the dependancies issues from using the code institute template;
+* run pip3 freeze > unins.txt && pip3 uninstall -y -r unins.txt && rm unins.txt
+* Reinstall all the dependencies that your app needs (using pip3 install)
+* Update requirements using pip3 freeze > requirements.txt
+* Save, Add, commit, and push everything to GitHub repository.
+
+From here onwards, whenever the work space is (re)started the following two things need to be done:
+* run pip3 freeze > unins.txt && pip3 uninstall -y -r unins.txt && rm unins.txt
+* run  pip3 install -r requirements.txt second
 
 
-****** make sure to set debug to false when going live ********
-
-Gitpod codebase change to dependancies
-If you have an older version of the template:
-run pip3 freeze > unins.txt && pip3 uninstall -y -r unins.txt && rm unins.txt as per @SuzyBee_lead’s instruction above
-(re)install all the dependencies that your app needs (using pip3 install)
-When you're confident all your dependencies are in the workspace, update requirements using pip3 freeze > requirements.txt
-Save, commit, and push.
-From here onwards, whenever you (re)start your workspace, you need to do two things:
-run pip3 freeze > unins.txt && pip3 uninstall -y -r unins.txt && rm unins.txt first, and then
-run  pip3 install -r requirements.txt second
-
-
-//-----------------------------
-
-GITPOD WORKSPACE ISSUE: FIX :ci:
-Due to a recent Gitpod update, many of you experienced problems with your Gitpod workspaces. We’re really sorry for this inconvenience, and our team has been working hard since Friday to correct the issue.
-We’ve now completely rebuilt the Gitpod Full Template from scratch, and we’re happy to say that all new workspaces created using the template will now work properly.
-If you’ve already created a requirements.txt file or you have tried to deploy your project with the extra, incorrect libraries, then please follow this procedure to recover your workspace:
-From the project directory, run this command: curl https://raw.githubusercontent.com/Code-Institute-Org/gitpod-full-template/main/.gitpod.dockerfile > .gitpod.dockerfile  which will overwrite the old Dockerfile with the working one.
-Open your corrupted requirements.txt file in Gitpod, select and copy the contents.
-Visit https://lechien73.github.io/reqfix/ and paste in the corrupted requirements file. Click Submit
-In the results panel, copy the cleaned requirements and paste them into your requirements.txt file back in Gitpod and save.
-Add, commit and push everything to your GitHub repository.
-Re-create the workspace by clicking on the Gitpod button from your repository.
-
+Due to a Gitpod update that was implemented after my milestone 3 project build had begun, Code institute supplied the following instructions to be apllied to fix the workspace issues;
+* From the project directory, run this command: curl https://raw.githubusercontent.com/Code-Institute-Org/gitpod-full-template/main/.gitpod.dockerfile > .gitpod.dockerfile  which will overwrite the old Dockerfile with the working one.
+* Open your corrupted requirements.txt file in Gitpod, select and copy the contents.
+* Visit ![Code institute Gitpod requitments file fix](https://lechien73.github.io/reqfix/) and paste in the corrupted requirements file. Click Submit
+* In the results panel, copy the cleaned requirements and paste them into your requirements.txt file back in Gitpod and save.
+* Save, add, commit and push everything to GitHub repository.
+* Re-create the workspace by clicking on the Gitpod button from your repository.
 
 ## Credits
 

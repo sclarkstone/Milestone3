@@ -61,6 +61,10 @@ body {
     flex: 1 0 auto;
   }
 
+footer {
+    padding: 30px;
+}
+
 
   /* card template */
 .preview {

@@ -13,6 +13,7 @@
       {% else %}
         {% if session.user|lower == "admin"|lower %}
         <p>Here are all the submitted better endings. View, edit and delete them here.</p>
+        <p>Or create a <a href="{{ url_for('add_ending') }}">New better ending</a> now.</p>
         <table>
           <thead>
             <tr>
@@ -39,6 +40,7 @@
         </table>
         {% else %}
         <p>Here are all your submitted better endings. View, edit and delete them here.</p>
+        <p>Or create a <a href="{{ url_for('add_ending') }}">New better ending</a> now.</p>
         <table>
           <thead>
             <tr>

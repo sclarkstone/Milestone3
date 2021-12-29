@@ -1,13 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
 <h3 class="light-blue-text text-darken-4 center-align">Prefer this ending to the original?</h3>
-<p class="center-align">Why not upvote this better ending to let the author know how much you enjoyed it.</p>
+<p class="center-align">
+  {% if session.user %}
+  Why not upvote this better ending to let the author know how much you enjoyed it.</p>
+  {% else %}
+     <a href="{{ url_for('login') }}">login</a> or <a href="{{ url_for('register') }}">Register</a> to upvote this better ending.</p>
+  {% endif %}
 
 <div class="row">
-    <div class="col s12 m6 offset-m3">
+    <div class="col s12 m8 offset-m2">
       <div class="card">
         <div class="card-image">
+          {% if ending.ending_image %}
           <img src="{{ ending.ending_image }}" alt="Image representing the film/tv series" />
+          {% else %}
+          <img src="/static/images/DefaultCardImage.png" alt="Default image representing a film/tv series" />
+          {% endif %}
         </div>
         <div class="card-content black-text">
           <p><span class="card-title"><strong>Title</strong>: {{ ending.ending_name }}</span>

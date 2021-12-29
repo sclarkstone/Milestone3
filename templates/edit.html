@@ -48,6 +48,17 @@
                     <label for="ending_name">Ending Name</label>
                 </div>
             </div>
+            <!-- Image URL -->
+            <div class="card-panel yellow lighten-4"><i class="fas fa-exclamation-triangle"></i> If you dont have a high quality image URL to use leave blank and a default image will be used.</div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
+                    <input id="ending_image" name="ending_image" minlength="3" maxlength="200"
+                    value="{{ ending.ending_image }}" type="text">
+                    <label for="ending_image">Ending image URL</label>
+                </div>
+            </div>
             <!-- ending Description -->
             <div class="row">
                 <div class="input-field col s12">

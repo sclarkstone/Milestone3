@@ -68,7 +68,10 @@ footer {
 
   /* card template */
 .preview {
-    max-height: 200px;
-    overflow: hidden;
+    height: 350px;
 }
 
+.card-image-preview {
+    max-height: 200px;
+    object-fit: cover;
+}

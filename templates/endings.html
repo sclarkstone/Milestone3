@@ -36,8 +36,8 @@
         <img src="/static/images/DefaultCardImage.png" alt="Default image representing a film/tv series" class="card-image-preview" />
         {% endif %}
       </div>
-      <div class="card-content black-text">
-        <span class="card-title"><strong>{{ ending.ending_name }}</strong></span>
+      <div class="card-content">
+        <div class="card-title"><p>{{ ending.ending_name }}</p></div>
         <p><span class="new badge" data-badge-caption="Upvote(s)">{{ ending.rated }}</span></p>          
         <p>({{ ending.ending_type }} - {{ ending.genre_name }})</p>
         <p><em>Submitted: {{ ending.ending_date }}</em></p>

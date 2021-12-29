@@ -6,7 +6,7 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug import utils
 from werkzeug.security import generate_password_hash, check_password_hash
-from datetime import datetime
+import datetime
 
 if os.path.exists("env.py"):
     import env
@@ -32,7 +32,6 @@ def is_logged_in():
 def get_endings():
     endings = mongo.db.endings.find().sort("ending_date", -1).limit(3)
     ratings = mongo.db.endings.find().sort("rated", -1).limit(3)
-
     return render_template("home.html", endings=endings, ratings=ratings)
 
 
@@ -152,7 +151,7 @@ def add_ending():
             "ending_name": request.form.get("ending_name"),
             "ending_image": request.form.get("ending_image"),
             "ending_description": request.form.get("ending_description"),
-            "ending_date": datetime.now(),
+            "ending_date": datetime.datetime.today(),
             "created_by": session["user"],
             "rated": 0,
         }
@@ -186,8 +185,6 @@ def edit_ending(ending_id):
             "type": request.form.get("type_name"),
             "name": request.form.get("ending_name"),
             "description": request.form.get("ending_description"),
-            "updated_at": datetime.now(),
-            "created_by": session["user"],
         }
         mongo.db.endings.update_one(
             {"_id": ObjectId(ending_id)},

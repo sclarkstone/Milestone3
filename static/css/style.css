@@ -82,3 +82,19 @@ footer {
         -webkit-box-orient: vertical;
         overflow: hidden;
 }
+
+.card .card-content{
+    padding: 10px;
+}
+
+.card-rates {
+    width: 100%;
+}
+
+.card-information {
+    width: 100%;
+}
+
+.card-information-title {
+    font-weight: bold;
+}

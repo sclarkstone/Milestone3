@@ -158,7 +158,7 @@ def add_ending():
         }
         mongo.db.endings.insert_one(ending)
         flash("Ending Successfully Added")
-        return redirect(url_for("get_endings"))
+        return redirect(url_for("profile"))
 
     genres = mongo.db.genres.find().sort("genre_name", 1)
     types = mongo.db.types.find().sort("type_name", 1)
@@ -194,6 +194,7 @@ def edit_ending(ending_id):
             {"_id": ObjectId(ending_id)},
             {"$set": submit})
         flash("Ending Successfully Updated")
+        return redirect(url_for("profile"))
 
     genres = mongo.db.genres.find().sort("genres_name", 1)
     types = mongo.db.types.find().sort("type_name", 1)

@@ -37,8 +37,8 @@
         {% endif %}
       </div>
       <div class="card-content">
+        <span class="new badge" data-badge-caption="Upvotes">{{ ending.rated }}</span>      
         <div class="card-title"><p>{{ ending.ending_name }}</p></div>
-        <p><span class="new badge" data-badge-caption="Upvote(s)">{{ ending.rated }}</span></p>          
         <p>({{ ending.ending_type }} - {{ ending.genre_name }})</p>
         <span class="card-date"><em>Added: {{ ending.ending_date }}</em></span>
       <p><a class="card-link" href="{{ url_for('ending_detail', ending_id=ending._id) }}">Read Better Ending...</a></p> 

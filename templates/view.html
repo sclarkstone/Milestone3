@@ -18,15 +18,16 @@
           <img src="/static/images/DefaultCardImage.png" alt="Default image representing a film/tv series" />
           {% endif %}
         </div>
-        <div class="card-content black-text">
-          <p><span class="card-title"><strong>Title</strong>: {{ ending.ending_name }}</span>
-          <span class="new badge" data-badge-caption="Upvote(s)">{{ ending.rated }}</span></p>
-          <p><strong>Genre: </strong> {{ ending.genre_name }}</p>
-                <p><strong>Type: </strong> {{ ending.ending_type }}</p>
-                <strong>Better Ending: </strong>
+        <div class="card-content">
+          <span class="new badge" data-badge-caption="Upvotes">{{ ending.rated }}</span></p>
+
+          <p><span class="card-title">Title: {{ ending.ending_name }}</span>
+          <p><span class="card-information-title">Genre: </span> {{ ending.genre_name }}</p>
+                <p><span class="card-information-title">Type: </span> {{ ending.ending_type }}</p>
+                <p><span class="card-information-title">Author: </span>{{ ending.created_by }}</p>
+                <p><span class="card-information-title">Added: </span>{{ ending.ending_date }}</p>
+                <p><span class="card-information-title">Better Ending: </span></p>
                 <p>{{ ending.ending_description }}</p>
-                <p><em>By: {{ ending.created_by }}</em></p>
-                <p><em>Added: {{ ending.ending_date }}</em></p>
 
               </div>
               <div class="card-action">

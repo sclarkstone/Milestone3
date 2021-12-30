@@ -177,14 +177,14 @@ def edit_ending(ending_id):
         flash("Invalid ID")
         return redirect(url_for('get_endings'))
     if request.method == "POST":
-        if ending["created_by"] != session["user"] :
+        if ending["created_by"] != session["user"] and session["user"] != 'admin':
+            print(session["user"] != 'admin')
             flash("Unauthorized")
-            print("The right user is selected")
             return redirect(url_for('get_endings'))
         
         submit = {
             "genre_name": request.form.get("genre_name"),
-            "ending_type": request.form.get("ending_type"),
+            "ending_type": request.form.get("type_name"),
             "ending_name": request.form.get("ending_name"),
             "ending_image": request.form.get("ending_image"),
             "ending_description": request.form.get("ending_description"),

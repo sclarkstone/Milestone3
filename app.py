@@ -32,6 +32,7 @@ def is_logged_in():
 def get_endings():
     endings = mongo.db.endings.find().sort("ending_date", -1).limit(3)
     ratings = mongo.db.endings.find().sort("rated", -1).limit(3)
+   
     return render_template("home.html", endings=endings, ratings=ratings)
 
 
@@ -174,18 +175,21 @@ def edit_ending(ending_id):
         ending = mongo.db.endings.find_one({"_id": ObjectId(ending_id)})
     except:
         flash("Invalid ID")
-        return redirect(url_for("home"))
+        return redirect(url_for('get_endings'))
     if request.method == "POST":
-        if ending["created_by"] != session["user"]:
+        if ending["created_by"] != session["user"] :
             flash("Unauthorized")
-            return redirect(url_for("home"))
-
+            print("The right user is selected")
+            return redirect(url_for('get_endings'))
+        
         submit = {
             "genre_name": request.form.get("genre_name"),
-            "type": request.form.get("type_name"),
-            "name": request.form.get("ending_name"),
-            "description": request.form.get("ending_description"),
+            "ending_type": request.form.get("ending_type"),
+            "ending_name": request.form.get("ending_name"),
+            "ending_image": request.form.get("ending_image"),
+            "ending_description": request.form.get("ending_description"),
         }
+
         mongo.db.endings.update_one(
             {"_id": ObjectId(ending_id)},
             {"$set": submit})

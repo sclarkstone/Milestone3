@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<h3 class="light-blue-text text-darken-4 center-align">Have you been disappointed with the ending of a film or series? </h3>
+<h3 class="light-blue-text text-darken-4 center-align">Ever been disappointed with the ending of a film or series? </h3>
 <p class="center-align">Ever thought you could write a better ending? Now's your chance! 
   {% if session.user %}
       Create your <a href="{{ url_for('add_ending') }}">New ending</a> now.</p>
@@ -27,7 +27,7 @@
         <div class="card-title"><p>{{ ending.ending_name }}</p></div>
         <p><span class="new badge" data-badge-caption="Upvote(s)">{{ ending.rated }}</span></p>          
         <p>({{ ending.ending_type }} - {{ ending.genre_name }})</p>
-        <p><em>Submitted: {{ ending.ending_date }}</em></p>
+        <span class="card-date"><em>Added: {{ ending.ending_date }}</em></span>
       <p><a class="card-link" href="{{ url_for('ending_detail', ending_id=ending._id) }}">Read Better Ending...</a></p> 
       </div>
             
@@ -54,7 +54,7 @@
         <div class="card-title"><p>{{ rating.ending_name }}</p></div>
         <p><span class="new badge" data-badge-caption="Upvote(s)">{{ rating.rated }}</span></p>         
         <p>({{ rating.ending_type }} - {{ rating.genre_name }})<p>
-        <p><em>Submitted: {{ rating.ending_date }}</em></p>
+        <span class="card-date"><em>Added: {{ rating.ending_date }}</em></span>
         <p><a class="card-link" href="{{ url_for('ending_detail', ending_id=rating._id) }}">Read Better Ending...</a></p>
             </div>
             

@@ -1,4 +1,15 @@
 /*
+    preview card date formatting
+*/
+
+
+$(".card-date").each(function() {
+    short_text = $(".card-date").html().substr(0, 21);
+    $(".card-date").html(short_text);
+    });
+
+
+/*
     jQuery for MaterializeCSS initialization
 */
 

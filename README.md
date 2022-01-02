@@ -1,4 +1,3 @@
-------- DEBUG TO FALSE ------
 # BETTER ENDINGS
 
 The live link can be found here - [site link](https://milestone-3-project-sam.herokuapp.com/)
@@ -105,9 +104,6 @@ This site is targeted at people who have watched filmes or tv series and that ha
 
 * [Chrome developer tools](https://developer.chrome.com/docs/devtools/) on the browser was used to see any errors on the pages.
     * Got the error '404 - unable to load favicon.ico'. The pathway on the Base.html template was incorrect. Once the correct pathway link was used this corrected the issue. 
-    * Got error 'net::ERR_CONNECTION_RESET'. ??????????????????????????
-    * Got error 'Uncaught ReferenceError: $ is not defined'. ?????????????????????
-
 
 * [Chrome developer tools](https://developer.chrome.com/docs/devtools/) device toggle toolbar was utilised to view the site via emulators of different screen sizes and devices.
 
@@ -115,6 +111,10 @@ This site is targeted at people who have watched filmes or tv series and that ha
 ![Chrome Lighthouse audit results](static/images/LighthouseAudit.png)
 
 * Chrome Lighthouse audit (Chrome -> dev tools -> Lighthouse) was run to for performance, accessibility, SEO and best practices. After running the initial audit the Best Practices category only scored an amber rather then green as the rest of the categories did. The audit advised that the 'Image natural dimensions should be proportional to the display size and the pixel ratio to maximize image clarity'. After using a higher quality image for the one card that was identified this then resolved the issue. To esure this issue would not happen again i decided to add some guidance instructions to the user form where image URLs are added and to have a default image if an appropriate quality image URL could not be found by the user. 
+
+![Chrome Lighthouse audit results second attempt](static/images/LighthouseAuditFinal.png)
+
+* Chrome Lighthouse audit - second attempt. After making corrections from the first audit and re running the audit on the second attempt all categories were green. 
 
 * JSHint was used to to detect errors and potential problems in your JavaScript code.
 
@@ -250,6 +250,7 @@ types|type_name|Series
 * install dnspython using command: 'pip3 install dnspython'
 * update requirements file
 * register a new user 'admin' with a secure password. this will be your admin user account.
+* Add a default image to /static/images/ for endings that don't have an image URL. 
 
 Due to a Gitpod codebase change to dependancies that was implimented after my milestone 3 project build had begun, Code institute supplied the following instructions to be applied to fix the dependancies issues from using the code institute template;
 * run command: 'pip3 freeze > unins.txt && pip3 uninstall -y -r unins.txt && rm unins.txt'

@@ -66,6 +66,13 @@ This site is targeted at people who have watched filmes or tv series and that ha
 
 ## Design and features
 
+### Database
+* To allow users to create, locate, display, edit and delete records (CRUD functionality) the database needed to have the follwing tables;
+    
+    * users - this would be to store a password for each user and to be able to associate which users was the author of each ending.
+    * endings - this would be to store the details of each endings, including the date it was submitted and a running total of how many up votes each ending has.
+    * genres and types - this would be for the admin user only to be able to easily expand the site for more variety of content.
+
 ### Home page
 
 * Navigation bar
@@ -195,19 +202,54 @@ After the third review with my mentor some recommendations for improvements were
 * When editing or deleting i got the error - "TypeError: 'Collection' object is not callable. If you meant to call the 'update' method on a 'Collection' object it is failing because no such method exists." I ended up getting tutor suupor to fix this. it turns out that remove is not a normal Mongo command, delete_one was needed instead and mongo.db.genres.update({"_id": ObjectId(genre_id)}, submit) needed to be  mongo.db.genres.update_one({"_id": ObjectId(genre_id)}, {"$set": submit}). 
 * top 3 highest rated not working, it was not showing the top 3 rated. On inspection i found that in the line 'ratings = mongo.db.endings.find().sort("ratings", -1).limit(3)' I had put the incorrect name of 'ratings' but to match the table field it needed to be 'rated'.
 
+## Desirable features
+This site for the purpose of this milestone project is a Minimum Viable Product (MVP) and contains essential features that allow it to function. Possible deseriable features for future development include;
+
+* The users table could be expanded to have 'user type' if there is a need for multiple admin users
+* logged in users could suscribe to notifications for when a new ending is added or when an ending has been edited.
+* reviews - rather then just have upvotes it could allow logged in users to offer feedback to the authors too.
 
 ## Set up and Deployment
 
-* Set up mongodb collection
-* randomkeygen for secrete code
-* create env file
+* Set up mongodb collection (milestone_3) with the following tables;
+
+Table name | column name | column type
+-----|------------------|----------------
+endings|genre_name|string
+endings|ending_name|string
+endings|ending_description|string
+endings|ending_date|Date
+endings|ending_type|string
+endings|created_by|string
+endings|rated|Int32
+endings|ending_image|string
+genres|genre_name|string
+types|type_name|string
+users|username|string
+users|password|string
+
+* In MongoDB collection insert documents as minimum default;
+
+Table name | column name | default content
+-----|------------------|----------------
+genres|genre_name|Horror
+genres|genre_name|Action
+genres|genre_name|Rom Com
+genres|genre_name|Animation
+types|type_name|Film
+types|type_name|Series
+
+
+* [randomkeygen](https://randomkeygen.com/) for secrete key generation.
+* create env file with ip, port, secret key, mongo URI and mongo db name.
 * create .gitignore file
 * create requirements file
 * create procfile
-* set up heroku - connect via github - add config vars and initiate automatic deployment
+* set up heroku - connect via github - add config vars (to match the ones in the env file) and initiate automatic deployment
 * install flask pymongo using command: 'pip3 install flask-pymongo'
 * install dnspython using command: 'pip3 install dnspython'
 * update requirements file
+* register a new user 'admin' with a secure password. this will be your admin user account.
 
 Due to a Gitpod codebase change to dependancies that was implimented after my milestone 3 project build had begun, Code institute supplied the following instructions to be applied to fix the dependancies issues from using the code institute template;
 * run command: 'pip3 freeze > unins.txt && pip3 uninstall -y -r unins.txt && rm unins.txt'
@@ -241,4 +283,16 @@ Due to a Gitpod update that was implemented after my milestone 3 project build h
     * responsivness and styling
     * Cards
     
-* [Code institute](https://learn.codeinstitute.net/) course material.
+* [Code institute](https://learn.codeinstitute.net/) course material. Specifically the Task manager mini project for the log in, register and logout authentication. This module was also used to inspire the mongodb collection structure.
+
+### Content
+
+* The icons in the forms were taken from [Font awesome](https://fontawesome.com/)
+
+* [google fonts](https://fonts.google.com/) was used to give the project a more professional and unique feel. Google fonts gave fonts that go together and as i had already seen the Lanto font in use on the Code institute 'love running' project and felt it fit in well with my project i went with Lant and Oswald. 
+
+* [techsini](http://techsini.com/multi-mockup/index.php) was used to generate the multi device website mock up used in the readme file.
+
+### Media
+
+* The card image URLs were taken from a range of sites from a google search of the relevant filem/ tv series. 

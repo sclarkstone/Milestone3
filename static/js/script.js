@@ -10,7 +10,7 @@ $(".card-date").each(function() {
 
 
 /*
-    jQuery for MaterializeCSS initialization
+    jQuery for MaterializeCSS initialization - credit to Code Institute Task manager mini project
 */
 
 $(document).ready(function () {
@@ -52,7 +52,7 @@ $(document).ready(function () {
 
 
 /*
-    vanilla JavaScript for MaterializeCSS initialization
+    vanilla JavaScript for MaterializeCSS initialization - credit to Code Institute Task manager mini project
 */
 
 // document.addEventListener('DOMContentLoaded', function () {

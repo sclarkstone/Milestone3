@@ -22,7 +22,7 @@ This site is targeted at people who have watched filmes or tv series and that ha
 
 #### Admin
 * Objective - what does the user want to accomplish? 
-    * To manage (create, view, edit and delete) genres. To write, edit and delete all the Better Endings from any user. Also, to view all users Better Endings and to upvote those that they feel are better then the original endings.
+    * To view, write, edit and delete all the Better Endings from any user. Also, to view all users Better Endings and to upvote those that they feel are better then the original endings.
 * Functional - what does the user need to do to accomplish the objective? whats involved?
     * Admin can log in and have instant access to manage (view, edit and delete) all Better Endings.
     * They can create new Better Endings. 
@@ -53,7 +53,6 @@ This site is targeted at people who have watched filmes or tv series and that ha
 ### Structure
 * how will content be organised and presented - site map
     * 3 pages for users - login, register and profile
-    * 1 page for admin - manage genres
     * 4 pages for content - home, search, view and edit
 
 ### Skeleton
@@ -66,17 +65,17 @@ This site is targeted at people who have watched filmes or tv series and that ha
 ## Design and features
 
 ### Database
-* To allow users to create, locate, display, edit and delete records (CRUD functionality) the database needed to have the follwing tables;
+* To allow users to create, locate, display, edit and delete records (CRUD functionality) the database needed to have the following tables;
     
     * users - this would be to store a password for each user and to be able to associate which users was the author of each ending.
     * endings - this would be to store the details of each endings, including the date it was submitted and a running total of how many up votes each ending has.
-    * genres and types - this would be for the admin user only to be able to easily expand the site for more variety of content.
+    * genres and types - This is to populate the genres and types options on the add new form. It would also bean option to add functionality for the admin user only to be able to add/edit/delete genres and types so hte possibility is there to easily expand the site for more variety of content. It future proofs the concept and makes it adaptable.
 
 ### Home page
 
 * Navigation bar
 
-    * Featured on all pages, the fully responsive bar includes Logo (links to homepage). The links available are then customised depending on which type of user is viewing. If they are not logged in and are just viewing content then the links available are Home, Log in and register. If they are logged in as Admin then the links available are Home, Profile, New Ending, Manage Genres and Log Out. All other logged in users have the following links available; Home, Porfile, New Ending and Log Out.
+    * Featured on all pages, the fully responsive bar includes Logo (links to homepage). The links available are then customised depending on which type of user is viewing. If they are not logged in and are just viewing content then the links available are Home, Log in and register. If they are logged in as Admin then the links available are Home, Profile, New Ending and Log Out. All other logged in users have the following links available; Home, Porfile, New Ending and Log Out.
     * This section will allow the user to easily navigate between pages without having to revert back to the previous page via the browsers back button.
     * The navigation bar uses a collapsed 'hamburger' style for the link on mobile devices and smaller screen sizes. 
 
@@ -237,41 +236,9 @@ Cards|ending details match the ending id selected to view| multiple endings sele
 Test | Expected Outcome | Actual outcome|status
 -----|------------------|----------------|--------
 not logged in|Should see Home, Browse, Login and register|can see Home, Browse, Login and register| Pass
-admin user logged in|Should see Home, Browse, Profile, New ending, manage genres and log out|can see Home, Browse, Profile, New ending, manage genres and log out| Pass
+admin user logged in|Should see Home, Browse, Profile, New ending and log out|can see Home, Browse, Profile, New ending and log out| Pass
 non admin user logged in|Should see Home, Browse, Profile, New ending and log out|can see Home, Browse, Profile, New ending and log out| Pass
 
-
-#### Manage genres page
-
-Test | Expected Outcome | Actual outcome|status
------|------------------|----------------|--------
-Images|All images appear, sized correctly with alt tags|Font awesome icons and social media icons all loaded correctly| Pass
-fonts|fonts use specified google fonts| Roboto and Lanto fonts load|Pass
-Nav bar|responsive navbar with varying screen sizes| Nav bar is full width with visable logo text and page links on desktop and tablet screen. On mobile screen sizes it is full width with a collapsed 'hamburger' toggle hiding the page links until pressed.|Pass 
-links|internal link to remain in current window and external links to open in new tab| 'Add genre' link opens internal link in same window to add genre page. footer social media links open in new tab to external relevant sites.|Pass
-Cards|responsive layout| Cards side by side on desktop and tablet screen sizes. Cards below one another on mobile screen sizes.|Pass
-
-#### Add genre page
-
-Test | Expected Outcome | Actual outcome|status
------|------------------|----------------|--------
-Images|All images appear, sized correctly with alt tags|Font awesome form icons and social media icons all loaded correctly| Pass
-fonts|fonts use specified google fonts| Roboto and Lanto fonts load|Pass
-Nav bar|responsive navbar with varying screen sizes| Nav bar is full width with visable logo text and page links on desktop and tablet screen. On mobile screen sizes it is full width with a collapsed 'hamburger' toggle hiding the page links until pressed.|Pass 
-links|internal link to remain in current window and external links to open in new tab| footer social media links open in new tab to external relevant sites|Pass
-Form - valid entry|validated responses to create new genre|The required field filled in with minimum length of 3 on the text field creates a new genre document in the genre table and redirects to the manage genres page with a flash message 'Gnre Successfully Added'|Pass
-Form - invalid entry|no responses, responses not meeting minimum requirements should not create genre| missing value prompt the form validation. less then minimum length on required text field prompts form validation |Pass
-
-#### Edit genre page
-
-Test | Expected Outcome | Actual outcome|status
------|------------------|----------------|--------
-Images|All images appear, sized correctly with alt tags|Font awesome form icons and social media icons all loaded correctly| Pass
-fonts|fonts use specified google fonts| Roboto and Lanto fonts load|Pass
-Nav bar|responsive navbar with varying screen sizes| Nav bar is full width with visable logo text and page links on desktop and tablet screen. On mobile screen sizes it is full width with a collapsed 'hamburger' toggle hiding the page links until pressed.|Pass 
-links|internal link to remain in current window and external links to open in new tab| footer social media links open in new tab to external relevant sites|Pass
-Form - valid entry|genre details visable and correct and validated response to edit genre|Fields completed with result relevant to the genre id specified to edit. Required field filled in with minimum length of 3 edits the correct genre document in the genre table and redirects to the manage genres page with a flash message 'Genre Successfully Updated'|Pass
-Form - invalid entry|no response, response not meeting minimum requirements should not edit genre| missing value prompt the form validation. less then minimum length on required text field prompts form validation |Pass
 
 ### Validator testing
 
@@ -301,8 +268,6 @@ After the first review with my mentor some recommendations for improvements were
      * Edit ending page (/ending/<ending_id>/edit) -> Form to edit ending
      * Login (/login)
      * Signup (/signup)
-     * Add review of POST type (/ending/<ending_id>/review/add)
-     * Edit review of POST type (/ending/<ending_id>/review/edit)
      * Delete ending page (/ending/<ending_id>/delete) -> Form to delete ending, only admin or users who created should be able to delete it
 
 
@@ -329,8 +294,9 @@ After the third review with my mentor some recommendations for improvements were
 ### Bugs
 
 * On the add new ending page i was unable to click or tab to the ending_image field. On inspection i found that i had ending_name in the label for. Once i corrected this to ending_image it worked as expected.
-* When editing or deleting i got the error - "TypeError: 'Collection' object is not callable. If you meant to call the 'update' method on a 'Collection' object it is failing because no such method exists." I ended up getting tutor suupor to fix this. it turns out that remove is not a normal Mongo command, delete_one was needed instead and mongo.db.genres.update({"_id": ObjectId(genre_id)}, submit) needed to be  mongo.db.genres.update_one({"_id": ObjectId(genre_id)}, {"$set": submit}). 
+* When editing or deleting i got the error - "TypeError: 'Collection' object is not callable. If you meant to call the 'update' method on a 'Collection' object it is failing because no such method exists." I ended up getting tutor support to fix this. it turns out that remove is not a normal Mongo command, delete_one was needed instead and mongo.db.endings.update({"_id": ObjectId(ending_id)}, submit) needed to be  mongo.db.endings.update_one({"_id": ObjectId(ending_id)}, {"$set": submit}). 
 * top 3 highest rated not working, it was not showing the top 3 rated. On inspection i found that in the line 'ratings = mongo.db.endings.find().sort("ratings", -1).limit(3)' I had put the incorrect name of 'ratings' but to match the table field it needed to be 'rated'.
+* When carrying out UAT i realised that the admin functionality to edit and delete the genres and types would inadvertently effect the existing cards within the effected genre. As the effected cards would still exist under a non existant genre/ type. To rectify this for this project i have removed the admin functionality to add, edit and delete the genres and types and added this to the desirable features list. 
 
 ## Desirable features
 This site for the purpose of this milestone project is a Minimum Viable Product (MVP) and contains essential features that allow it to function. Possible deseriable features for future development include;
@@ -340,6 +306,7 @@ This site for the purpose of this milestone project is a Minimum Viable Product 
 * reviews - rather then just have upvotes it could allow logged in users to offer feedback to the authors too.
 * more advanced searched and filter to allow easier content searches for the user as more content is added.
 * After clicking delete to have an alter to check the user wants to permenantly delete the ending.
+* Allow admin to add and edit genres and types without impacting existing endings.
 
 ## Set up and Deployment
 

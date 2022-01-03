@@ -87,6 +87,7 @@ This site is targeted at people who have watched filmes or tv series and that ha
 * Content
 
     * The home page begins with a larger header which immediatly gives the context of the site.
+    * There is a dynamic link which checks to see if a user is logged in. if there is not a user session set then a link to the login/ register pages are displayed. If there is a user session set then a link directly to the new ending page is displayed.
     * Further details then provide a link so that a user can browse all the site content.
     * A row of cards display the top 3 - most recently added endings into the database.This is dynamic and will always display the most recent from all the records in the database.
     * A further row of cards display the top 3 - highest rated endings. This is dynamic and will always display the highest rated from all the records in the database. 
@@ -98,11 +99,12 @@ This site is targeted at people who have watched filmes or tv series and that ha
 * Footer
 
     * The footer section is repeated across all pages for consistancy so the user can become comfortable with the layout no matter which page they are on.
+    * The footer contains links to social media accounts that open in new windows so that they can easily go back to the page they were on.
 
 
-### Browse page
+### Browse page (/endings)
 
-* 
+* A search function 
 
 ## Testing
 
@@ -139,12 +141,77 @@ The UAT was carried out on desktop, tablet and mobile screen sizes. The UAT was 
 
 Test | Expected Outcome | Actual outcome|status
 -----|------------------|----------------|--------
-Images|All images appear, sized correctly with alt tags|Card images all loaded correctly| Pass
+Images|All images appear, sized correctly with alt tags|Card images and font awesome social media icons all loaded correctly| Pass
 fonts|fonts use specified google fonts| Roboto and Lanto fonts load|Pass
 Nav bar|responsive navbar with varying screen sizes| Nav bar is full width with visable logo text and page links on desktop and tablet screen. On mobile screen sizes it is full width with a collapsed 'hamburger' toggle hiding the page links until pressed.|Pass 
 links|internal link to remain in current window and external links to open in new tab| 'Browse' link opens internal link in same window to endings page.|Pass
-Dynamic links|Internal links to open in same tab with dynamic ending id as url parameter| Card links all open correct endings page with ending id.|Pass
+Dynamic links|Internal links to open in same tab with dynamic ending id as url parameter| Card links all open correct endings page with ending id and user session check displays relevant internal link . footer social media links open in new tab to external relevant sites |Pass
 Cards|responsive layout| Cards side by side on desktop and tablet screen sizes. Cards below one another on mobile screen sizes.|Pass
+Cards|recently added|The 3 most recently submitted endings from endings table, ending_date are displayed.|Pass
+Cards|highest rated added|The 3 most highest rated endings from endings table, rated column count are displayed.|Pass
+
+#### Browse page
+
+Test | Expected Outcome | Actual outcome|status
+-----|------------------|----------------|--------
+Images|All images appear, sized correctly with alt tags|Card images and font awesome social media icons all loaded correctly| Pass
+fonts|fonts use specified google fonts| Roboto and Lanto fonts load|Pass
+Nav bar|responsive navbar with varying screen sizes| Nav bar is full width with visable logo text and page links on desktop and tablet screen. On mobile screen sizes it is full width with a collapsed 'hamburger' toggle hiding the page links until pressed.|Pass 
+links|internal link to remain in current window and external links to open in new tab| Home page link opens internal link in same window to Home page.|Pass
+Dynamic links|Internal links to open in same tab with dynamic ending id as url parameter| Card links all open correct endings page with ending id. footer social media links open in new tab to external relevant sites |Pass
+Cards|responsive layout| Cards side by side on desktop and tablet screen sizes. Cards below one another on mobile screen sizes.|Pass
+Search|filters by title and reset button resets to all|searching for the term 'seven' filters to one result as expected and the reset button then shows all results|Pass
+
+#### Login page
+
+Test | Expected Outcome | Actual outcome|status
+-----|------------------|----------------|--------
+Images|All images appear, sized correctly with alt tags|Font awesome form icons and social media icons all loaded correctly| Pass
+fonts|fonts use specified google fonts| Roboto and Lanto fonts load|Pass
+Nav bar|responsive navbar with varying screen sizes| Nav bar is full width with visable logo text and page links on desktop and tablet screen. On mobile screen sizes it is full width with a collapsed 'hamburger' toggle hiding the page links until pressed.|Pass 
+links|internal link to remain in current window and external links to open in new tab| 'Register account' link opens internal link in same window to Register page. footer social media links open in new tab to external relevant sites|Pass
+Form - valid entry|validated responses to login|An existing username and password matching what is in the users table and redirects to profile page|Pass
+Form - invalid entry|no responses, username that does not exist or username and password not matching to users table should not login| missing values prompt the form validation. existing 'admin' username gives 'incorrect username and/or password' flash message. less then minimum length on password prompts form validation |Pass
+
+#### Register page
+
+Test | Expected Outcome | Actual outcome|status
+-----|------------------|----------------|--------
+Images|All images appear, sized correctly with alt tags|Font awesome form icons and social media icons all loaded correctly| Pass
+fonts|fonts use specified google fonts| Roboto and Lanto fonts load|Pass
+Nav bar|responsive navbar with varying screen sizes| Nav bar is full width with visable logo text and page links on desktop and tablet screen. On mobile screen sizes it is full width with a collapsed 'hamburger' toggle hiding the page links until pressed.|Pass 
+links|internal link to remain in current window and external links to open in new tab| 'Log in' link opens internal link in same window to Login page. footer social media links open in new tab to external relevant sites|Pass
+Form - valid entry|validated responses to create new account|a unique username and password matching the minimum requirements creats account in users table and redirects to profile page with a flash message 'welcome'|Pass
+Form - invalid entry|no responses, responses not meeting minimum requirements or existing username should not create an account| missing values prompt the form validation. existing 'admin' username gives 'incorrect username and/or password' flash message. less then minimum length on password prompts form validation |Pass
+
+#### Profile page
+
+Test | Expected Outcome | Actual outcome|status
+-----|------------------|----------------|--------
+Images|All images appear, sized correctly with alt tags|Font awesome social media icons all loaded correctly| Pass
+fonts|fonts use specified google fonts| Roboto and Lanto fonts load|Pass
+Nav bar|responsive navbar with varying screen sizes| Nav bar is full width with visable logo text and page links on desktop and tablet screen. On mobile screen sizes it is full width with a collapsed 'hamburger' toggle hiding the page links until pressed.|Pass 
+links|internal link to remain in current window and external links to open in new tab| 'New better ending' link opens internal link in same window to new ending page. footer social media links open in new tab to external relevant sites|Pass
+Dynamic links|Internal links to open in same tab with dynamic ending id as url parameter| Action links (view, edit and delete) all open correct pages with ending id. |Pass
+Dynamic Content|display all endings for admin user or if not admin then only show the endings that the user has submitted. If no endings have been submitted then introduction sentence is modified| Admin user displays all endings. Non admin user (sclarkstone) displays the 5 that were submitted. User that has not submitted any endings (samclarkstone) displays link to create better ending only and all else is hidden on page |Pass
+Delete|Delete ending document from endings table| clicking the delete button deletes the ending from the table|Pass
+
+#### Add better ending page
+
+Test | Expected Outcome | Actual outcome|status
+-----|------------------|----------------|--------
+Images|All images appear, sized correctly with alt tags|Font awesome form icons and social media icons all loaded correctly| Pass
+fonts|fonts use specified google fonts| Roboto and Lanto fonts load|Pass
+Nav bar|responsive navbar with varying screen sizes| Nav bar is full width with visable logo text and page links on desktop and tablet screen. On mobile screen sizes it is full width with a collapsed 'hamburger' toggle hiding the page links until pressed.|Pass 
+links|internal link to remain in current window and external links to open in new tab| footer social media links open in new tab to external relevant sites|Pass
+Form - valid entry|validated responses to create new ending|all required fileds (all except the image URL) filled in with minimum length of 3 on the text feilds or a selected option from the drop downs fields creates a new ending document in the endings table and redirects to the home page with a flash message 'Ending Successfully Added'|Pass
+Form - invalid entry|no responses, responses not meeting minimum requirements should not create an ending| missing values prompt the form validation. less then minimum length on required text fields prompts form validation |Pass
+
+
+#### Edit better ending page
+#### View page
+#### Nav bar links
+#### Manage genres page
 
 
 ### Validator testing
@@ -212,6 +279,8 @@ This site for the purpose of this milestone project is a Minimum Viable Product 
 * The users table could be expanded to have 'user type' if there is a need for multiple admin users
 * logged in users could suscribe to notifications for when a new ending is added or when an ending has been edited.
 * reviews - rather then just have upvotes it could allow logged in users to offer feedback to the authors too.
+* more advanced searched and filter to allow easier content searches for the user as more content is added.
+* After clicking delete to have an alter to check the user wants to permenantly delete the ending.
 
 ## Set up and Deployment
 

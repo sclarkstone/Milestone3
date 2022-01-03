@@ -99,7 +99,11 @@ This site is targeted at people who have watched filmes or tv series and that ha
 
     * The footer section is repeated across all pages for consistancy so the user can become comfortable with the layout no matter which page they are on.
 
-//---------------------------------
+
+### Browse page
+
+* 
+
 ## Testing
 
 * [Chrome developer tools](https://developer.chrome.com/docs/devtools/) on the browser was used to see any errors on the pages.

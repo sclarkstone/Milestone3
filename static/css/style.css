@@ -41,7 +41,7 @@ p {
     line-height: 2;
 }
 
-/* nav bar */
+/* -------------------------------------- nav bar */
 @media only screen and (max-width: 425px){
 nav .brand-logo {
     left: 40%;
@@ -55,7 +55,7 @@ div.nav-wrapper{
 
 
 
-/* footer */
+/* ----------------------------------- footer */
 body {
     display: flex;
     min-height: 100vh;
@@ -67,11 +67,25 @@ body {
   }
 
 footer {
-    padding: 30px;
+    padding: 10px;
 }
 
+.social-media {
+    text-align: center;
+}
 
-  /* card template */
+.social-media li {
+    display: inline;
+}
+
+.social-media i {
+    font-size: 160%;
+    margin-top: 10px;
+    padding-left: 2%;
+    color: #fff;
+}
+
+  /* -------------------------------- card template */
 .preview {
     height: 350px;
 }

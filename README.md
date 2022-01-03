@@ -209,10 +209,69 @@ Form - invalid entry|no responses, responses not meeting minimum requirements sh
 
 
 #### Edit better ending page
+
+Test | Expected Outcome | Actual outcome|status
+-----|------------------|----------------|--------
+Images|All images appear, sized correctly with alt tags|Font awesome form icons and social media icons all loaded correctly| Pass
+fonts|fonts use specified google fonts| Roboto and Lanto fonts load|Pass
+Nav bar|responsive navbar with varying screen sizes| Nav bar is full width with visable logo text and page links on desktop and tablet screen. On mobile screen sizes it is full width with a collapsed 'hamburger' toggle hiding the page links until pressed.|Pass 
+links|internal link to remain in current window and external links to open in new tab| footer social media links open in new tab to external relevant sites|Pass
+Form - valid entry|ending details visable and correct and validated responses to edit ending|All fields completed with results relevant to the edning id specified to edit. All required fileds (all except the image URL) filled in with minimum length of 3 on the text feilds or a selected option from the drop downs fields edits the correct ending document in the endings table and redirects to the home page with a flash message 'Ending Successfully Updated'|Pass
+Form - invalid entry|no responses, responses not meeting minimum requirements should not edit ending| missing values prompt the form validation. less then minimum length on required text fields prompts form validation |Pass
+
 #### View page
+
+Test | Expected Outcome | Actual outcome|status
+-----|------------------|----------------|--------
+Images|All images appear, sized correctly with alt tags|Card image and font awesome social media icons all loaded correctly| Pass
+fonts|fonts use specified google fonts| Roboto and Lanto fonts load|Pass
+Nav bar|responsive navbar with varying screen sizes| Nav bar is full width with visable logo text and page links on desktop and tablet screen. On mobile screen sizes it is full width with a collapsed 'hamburger' toggle hiding the page links until pressed.|Pass 
+links|internal link to remain in current window and external links to open in new tab| 'Browse' link opens internal link in same window to endings page.|Pass
+Dynamic links|Internal links to open in same tab with dynamic ending id as url parameter| User session check displays relevant internal link to 'new ending' if user is logged in and 'login or register' if not logged in . footer social media links open in new tab to external relevant sites |Pass
+Dynamic Content|Display upvote button if user session set and increase upvote by one if button clicked.|Upvote button not visable if no user logged in. Upvote button visable if any user logged in and selecting it increases the count by one in the endings document for the selected ending id and a flash messages displays, 'Upvote successful' |Pass
+Cards|ending details match the ending id selected to view| multiple endings selected and each view page then displays the correct ending details that corresponds to the ending id that was selected.|Pass
+
+
 #### Nav bar links
+
+Test | Expected Outcome | Actual outcome|status
+-----|------------------|----------------|--------
+not logged in|Should see Home, Browse, Login and register|can see Home, Browse, Login and register| Pass
+admin user logged in|Should see Home, Browse, Profile, New ending, manage genres and log out|can see Home, Browse, Profile, New ending, manage genres and log out| Pass
+non admin user logged in|Should see Home, Browse, Profile, New ending and log out|can see Home, Browse, Profile, New ending and log out| Pass
+
+
 #### Manage genres page
 
+Test | Expected Outcome | Actual outcome|status
+-----|------------------|----------------|--------
+Images|All images appear, sized correctly with alt tags|Font awesome icons and social media icons all loaded correctly| Pass
+fonts|fonts use specified google fonts| Roboto and Lanto fonts load|Pass
+Nav bar|responsive navbar with varying screen sizes| Nav bar is full width with visable logo text and page links on desktop and tablet screen. On mobile screen sizes it is full width with a collapsed 'hamburger' toggle hiding the page links until pressed.|Pass 
+links|internal link to remain in current window and external links to open in new tab| 'Add genre' link opens internal link in same window to add genre page. footer social media links open in new tab to external relevant sites.|Pass
+Cards|responsive layout| Cards side by side on desktop and tablet screen sizes. Cards below one another on mobile screen sizes.|Pass
+
+#### Add genre page
+
+Test | Expected Outcome | Actual outcome|status
+-----|------------------|----------------|--------
+Images|All images appear, sized correctly with alt tags|Font awesome form icons and social media icons all loaded correctly| Pass
+fonts|fonts use specified google fonts| Roboto and Lanto fonts load|Pass
+Nav bar|responsive navbar with varying screen sizes| Nav bar is full width with visable logo text and page links on desktop and tablet screen. On mobile screen sizes it is full width with a collapsed 'hamburger' toggle hiding the page links until pressed.|Pass 
+links|internal link to remain in current window and external links to open in new tab| footer social media links open in new tab to external relevant sites|Pass
+Form - valid entry|validated responses to create new genre|The required field filled in with minimum length of 3 on the text field creates a new genre document in the genre table and redirects to the manage genres page with a flash message 'Gnre Successfully Added'|Pass
+Form - invalid entry|no responses, responses not meeting minimum requirements should not create genre| missing value prompt the form validation. less then minimum length on required text field prompts form validation |Pass
+
+#### Edit genre page
+
+Test | Expected Outcome | Actual outcome|status
+-----|------------------|----------------|--------
+Images|All images appear, sized correctly with alt tags|Font awesome form icons and social media icons all loaded correctly| Pass
+fonts|fonts use specified google fonts| Roboto and Lanto fonts load|Pass
+Nav bar|responsive navbar with varying screen sizes| Nav bar is full width with visable logo text and page links on desktop and tablet screen. On mobile screen sizes it is full width with a collapsed 'hamburger' toggle hiding the page links until pressed.|Pass 
+links|internal link to remain in current window and external links to open in new tab| footer social media links open in new tab to external relevant sites|Pass
+Form - valid entry|genre details visable and correct and validated response to edit genre|Fields completed with result relevant to the genre id specified to edit. Required field filled in with minimum length of 3 edits the correct genre document in the genre table and redirects to the manage genres page with a flash message 'Genre Successfully Updated'|Pass
+Form - invalid entry|no response, response not meeting minimum requirements should not edit genre| missing value prompt the form validation. less then minimum length on required text field prompts form validation |Pass
 
 ### Validator testing
 

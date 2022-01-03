@@ -90,7 +90,7 @@ This site is targeted at people who have watched filmes or tv series and that ha
     * Further details then provide a link so that a user can browse all the site content.
     * A row of cards display the top 3 - most recently added endings into the database.This is dynamic and will always display the most recent from all the records in the database.
     * A further row of cards display the top 3 - highest rated endings. This is dynamic and will always display the highest rated from all the records in the database. 
-    * The header bottom is responsive to screen size and will adjust accordingly by having the cards side by side on a larger screen size. On a smaller screen size the cards will appear below one another.
+    * The card rows are responsive to screen size and will adjust accordingly by having the cards side by side on a larger screen size. On a smaller screen size the cards will appear below one another.
 
 ![Large screen main content](static/images/HomeLargeScreen.png)
 ![Mobile screen main content](static/images/HomeMobileScreen.png)

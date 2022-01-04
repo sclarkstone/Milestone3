@@ -22,10 +22,13 @@ h3 {
     text-align: center;
 }
 
-h4,
+h4{
+    font-family: Roboto;
+    color: #0277bd;  
+}
+
 p {
     font-family: Roboto;
-    color: #0277bd;
 }
 
 a {

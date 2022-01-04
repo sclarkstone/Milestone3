@@ -139,6 +139,13 @@ This site is targeted at people who have watched filmes or tv series and that ha
 * The edit action button takes the user to the edit page and displays the ending details in the edit form of the corresponding selected ending id.
 * The delete action button deletes the document from the endings table using the corresponding selected ending id.
 
+### Add new ending page
+
+* A form is displayed with validated fields (all required with a minimum length except for image URL). 
+
+### Edit ending page
+
+* A form is displayed with validated fields (all required with a minimum length except for image URL). All fields that were completed on original submition or last edit are populated with the corresponding ending ids details. 
 
 ## Testing
 
@@ -427,9 +434,11 @@ Due to a Gitpod update that was implemented after my milestone 3 project build h
 
 * The icons in the forms were taken from [Font awesome](https://fontawesome.com/)
 
-* [google fonts](https://fonts.google.com/) was used to give the project a more professional and unique feel. Google fonts gave fonts that go together and as i had already seen the Lanto font in use on the Code institute 'love running' project and felt it fit in well with my project i went with Lant and Oswald. 
+* [google fonts](https://fonts.google.com/) was used to give the project a more professional and unique feel. Google fonts gave fonts that go together and as i had already seen the Lanto font in use on the Code institute 'love running' project and felt it fit in well with my project i went with Lant and Roboto. 
 
 * [techsini](http://techsini.com/multi-mockup/index.php) was used to generate the multi device website mock up used in the readme file.
+
+* [material.io](https://material.io/resources/color/#!/?view.left=1&view.right=1&primary.color=0277bd]) was used to check accessibility of text colours on background colours. Also used to find complemetary colours. This is where i decided on my shade of blue with white text. As the result was that black was not legible on this shade of blue. Credit to my mentor Akshat for showing me this resource. 
 
 ### Media
 

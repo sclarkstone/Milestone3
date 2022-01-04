@@ -19,14 +19,12 @@ h2,
 h3 {
     font-family: Lato;
     text-transform: uppercase;
-    letter-spacing: 1px;
     text-align: center;
 }
 
 h4,
 p {
     font-family: Roboto;
-    letter-spacing: 1px;
 }
 
 /* --------------------------------- nav and buttons */
@@ -36,6 +34,10 @@ p {
 }
 
 .btn-small {
+    margin-bottom: 10px;
+}
+
+.btn-large {
     margin-bottom: 10px;
 }
 

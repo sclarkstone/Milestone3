@@ -1,75 +1,75 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h3 class="light-blue-text text-darken-4 center-align">Add Better Ending</h3>
+<h3 class="light-blue-text text-darken-4 center-align">Add Better Ending</h3>
 
-    <div class="row card-panel grey lighten-5">
-        <form class="col s12" method="POST" action="{{ url_for('add_ending') }}">
-            <!-- genre selection -->
-            <div class="row">
-				<div class="input-field col s12">
-                    <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
-					<select id="genre_name" name="genre_name" class="validate" required>
-                        <option value="" disabled selected>Choose Genre</option>
-                        {% for genre in genres %}
-                            <option value="{{ genre.genre_name }}">{{ genre.genre_name }}</option>
-                        {% endfor %}
-                    </select>
-					<label for="genre_name">Ending Genre</label>
-				</div>
-			</div>
-            <!-- type selection -->
-            <div class="row">
-				<div class="input-field col s12">
-                    <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
-					<select id="type_name" name="type_name" class="validate" required>
-                        <option value="" disabled selected>Choose Type</option>
-                        {% for type in types %}
-                            <option value="{{ type.type_name }}">{{ type.type_name }}</option>
-                        {% endfor %}
-                    </select>
-					<label for="type_name">Ending Type</label>
-				</div>
-			</div>
-            <!-- name -->
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
-                    <input id="ending_name" name="ending_name" minlength="3" maxlength="50"
-                        type="text" class="validate" required>
-                    <label for="ending_name">Ending Name</label>
-                </div>
+<div class="row card-panel grey lighten-5">
+    <form class="col s12" method="POST" action="{{ url_for('add_ending') }}">
+        <!-- genre selection -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
+                <select id="genre_name" name="genre_name" class="validate" required>
+                    <option value="" disabled selected>Choose Genre</option>
+                    {% for genre in genres %}
+                    <option value="{{ genre.genre_name }}">{{ genre.genre_name }}</option>
+                    {% endfor %}
+                </select>
+                <label for="genre_name">Ending Genre</label>
             </div>
-            <!-- Image URL -->
-            <div class="card-panel yellow lighten-4"><i class="fas fa-exclamation-triangle"></i> If you don't have a high quality image URL to use leave blank and a default image will be used.
+        </div>
+        <!-- type selection -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
+                <select id="type_name" name="type_name" class="validate" required>
+                    <option value="" disabled selected>Choose Type</option>
+                    {% for type in types %}
+                    <option value="{{ type.type_name }}">{{ type.type_name }}</option>
+                    {% endfor %}
+                </select>
+                <label for="type_name">Ending Type</label>
+            </div>
+        </div>
+        <!-- name -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
+                <input id="ending_name" name="ending_name" minlength="3" maxlength="50" type="text" class="validate"
+                    required>
+                <label for="ending_name">Ending Name</label>
+            </div>
+        </div>
+        <!-- Image URL -->
+        <div class="card-panel yellow lighten-4"><i class="fas fa-exclamation-triangle"></i> If you don't have a high
+            quality image URL to use leave blank and a default image will be used.
 
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
-                    <input id="ending_image" name="ending_image" minlength="3" maxlength="200"
-                        type="text">
+                    <input id="ending_image" name="ending_image" minlength="3" maxlength="200" type="text">
                     <label for="ending_image">Ending image URL</label>
                 </div>
             </div>
         </div>
-            <!-- ending Description -->
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-align-left prefix light-blue-text text-darken-4"></i>
-                    <textarea id="ending_description" name="ending_description" minlength="5"
-                        maxlength="2000" class="materialize-textarea validate" required></textarea>
-                    <label for="ending_description">Better ending</label>
-                </div>
+        <!-- ending Description -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-align-left prefix light-blue-text text-darken-4"></i>
+                <textarea id="ending_description" name="ending_description" minlength="5" maxlength="2000"
+                    class="materialize-textarea validate" required></textarea>
+                <label for="ending_description">Better ending</label>
             </div>
-			<!-- submit button -->
-            <div class="row">
-                <div class="col s12 center-align">
-                    <button type="submit" class="btn-large light-blue darken-1 text-shadow">
-                        Add Ending <i class="fas fa-plus-square right"></i>
-                    </button>
-                </div>
+        </div>
+        <!-- submit button -->
+        <div class="row">
+            <div class="col s12 center-align">
+                <button type="submit" class="btn-large light-blue darken-1 text-shadow">
+                    Add Ending <i class="fas fa-plus-square right"></i>
+                </button>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
+</div>
 
 {% endblock %}

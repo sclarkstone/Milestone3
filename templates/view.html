@@ -4,52 +4,53 @@
 <p class="center-align">
   {% if session.user %}
   Why not upvote this better ending to let the author know how much you enjoyed it.</p>
-  {% else %}
-     <a href="{{ url_for('login') }}">login</a> or <a href="{{ url_for('register') }}">Register</a> to upvote this better ending.</p>
-  {% endif %}
+{% else %}
+<a href="{{ url_for('login') }}">login</a> or <a href="{{ url_for('register') }}">Register</a> to upvote this better
+ending.</p>
+{% endif %}
 
 <div class="row">
-    <div class="col s12 m8 offset-m2">
-      <div class="card">
-        <div class="card-image">
-          {% if ending.ending_image %}
-          <img src="{{ ending.ending_image }}" alt="Image representing the film/tv series" />
-          {% else %}
-          <img src="/static/images/DefaultCardImage.png" alt="Default image representing a film/tv series" />
-          {% endif %}
-        </div>
-        <div class="card-content">
-          <span class="new badge" data-badge-caption="Upvotes">{{ ending.rated }}</span></p>
+  <div class="col s12 m8 offset-m2">
+    <div class="card">
+      <div class="card-image">
+        {% if ending.ending_image %}
+        <img src="{{ ending.ending_image }}" alt="Image representing the film/tv series" />
+        {% else %}
+        <img src="/static/images/DefaultCardImage.png" alt="Default image representing a film/tv series" />
+        {% endif %}
+      </div>
+      <div class="card-content">
+        <span class="new badge" data-badge-caption="Upvotes">{{ ending.rated }}</span></p>
 
-          <p><span class="card-title">Title: {{ ending.ending_name }}</span>
+        <p><span class="card-title">Title: {{ ending.ending_name }}</span>
           <p><span class="card-information-title">Genre: </span> {{ ending.genre_name }}</p>
-                <p><span class="card-information-title">Type: </span> {{ ending.ending_type }}</p>
-                <p><span class="card-information-title">Author: </span>{{ ending.created_by }}</p>
-                <p><span class="card-information-title">Added: </span>{{ ending.ending_date }}</p>
-                <p><span class="card-information-title">Better Ending: </span></p>
-                <p>{{ ending.ending_description }}</p>
+          <p><span class="card-information-title">Type: </span> {{ ending.ending_type }}</p>
+          <p><span class="card-information-title">Author: </span>{{ ending.created_by }}</p>
+          <p><span class="card-information-title">Added: </span>{{ ending.ending_date }}</p>
+          <p><span class="card-information-title">Better Ending: </span></p>
+          <p>{{ ending.ending_description }}</p>
 
-              </div>
-              <div class="card-action">
-                {% if session.user %}
-                <form method="POST" action="{{ url_for('upvote_ending', ending_id=ending._id) }}">
-                  <input type="hidden" id="rated" name="rated" value="1">
-                <button type="submit" class="btn-large light-green darken-1">
-                  <i class="fas fa-thumbs-up"> Upvote</i>
-              </button>
-                </form>
-                {% else %}
-                
-                {% endif %}
-</div>
+      </div>
+      <div class="card-action">
+        {% if session.user %}
+        <form method="POST" action="{{ url_for('upvote_ending', ending_id=ending._id) }}">
+          <input type="hidden" id="rated" name="rated" value="1">
+          <button type="submit" class="btn-large light-green darken-1">
+            <i class="fas fa-thumbs-up"> Upvote</i>
+          </button>
+        </form>
+        {% else %}
+
+        {% endif %}
       </div>
     </div>
   </div>
+</div>
 
-  <p class="center-align">Ready to write your own better ending? 
-    {% if session.user %}
-        Create your <a href="{{ url_for('add_ending') }}">New ending</a> now.</p>
-    {% else %}
-       <a href="{{ url_for('login') }}">login</a> or <a href="{{ url_for('register') }}">Register</a> to get started.</p>
-    {% endif %}
+<p class="center-align">Ready to write your own better ending?
+  {% if session.user %}
+  Create your <a href="{{ url_for('add_ending') }}">New ending</a> now.</p>
+{% else %}
+<a href="{{ url_for('login') }}">login</a> or <a href="{{ url_for('register') }}">Register</a> to get started.</p>
+{% endif %}
 {% endblock %}

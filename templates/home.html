@@ -1,38 +1,44 @@
 {% extends "base.html" %}
 {% block content %}
 <h3 class="light-blue-text text-darken-4 center-align">Ever been disappointed with the ending of a film or series? </h3>
-<p class="center-align">Ever thought you could write a better ending? Now's your chance! 
+<p class="center-align">Ever thought you could write a better ending? Now's your chance!
   {% if session.user %}
-      Create your <a href="{{ url_for('add_ending') }}">New ending</a> now.</p>
-  {% else %}
-     <a href="{{ url_for('login') }}">login</a> or <a href="{{ url_for('register') }}">Register</a> to get started.</p>
-  {% endif %}
+  Create your <a href="{{ url_for('add_ending') }}">New ending</a> now.</p>
+{% else %}
+<a href="{{ url_for('login') }}">login</a> or <a href="{{ url_for('register') }}">Register</a> to get started.</p>
+{% endif %}
 
-<p class="center-align">Check out the most recent and highest rated better endings or have a <a href="{{ url_for('endings') }}">Browse</a> through all the better endings.</p>
+<p class="center-align">Check out the most recent and highest rated better endings or have a <a
+    href="{{ url_for('endings') }}">Browse</a> through all the better endings.</p>
 
-  
+
 <div class="row">
   <h4>Top 3 - Recently added</h4>
   {% for ending in endings %}
- 
+
   <div class="col s12 m4">
     <div class="card preview">
       <div class="card-image">
         {% if ending.ending_image %}
         <img src="{{ ending.ending_image }}" alt="Image representing the film/tv series" class="card-image-preview" />
         {% else %}
-        <img src="/static/images/DefaultCardImage.png" alt="Default image representing a film/tv series" class="card-image-preview" />
+        <img src="/static/images/DefaultCardImage.png" alt="Default image representing a film/tv series"
+          class="card-image-preview" />
         {% endif %}
       </div>
       <div class="card-content">
-        <div class="card-rates"><span class="new badge" data-badge-caption="Upvotes">{{ ending.rated }}</span></div> 
-        <div class="card-title"><p>{{ ending.ending_name }}</p></div>       
-        <div class="card-information"><p>({{ ending.ending_type }} - {{ ending.genre_name }})</p>
-        <p><span class="card-date"><em>Added: {{ ending.ending_date }}</em></span></p>
-      <p><a class="card-link" href="{{ url_for('ending_detail', ending_id=ending._id) }}">Read Better Ending...</a></p> 
-    </div> 
-  </div>
-</div>
+        <div class="card-rates"><span class="new badge" data-badge-caption="Upvotes">{{ ending.rated }}</span></div>
+        <div class="card-title">
+          <p>{{ ending.ending_name }}</p>
+        </div>
+        <div class="card-information">
+          <p>({{ ending.ending_type }} - {{ ending.genre_name }})</p>
+          <p><span class="card-date"><em>Added: {{ ending.ending_date }}</em></span></p>
+          <p><a class="card-link" href="{{ url_for('ending_detail', ending_id=ending._id) }}">Read Better Ending...</a>
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
   {% endfor %}
 </div>
@@ -47,17 +53,22 @@
         {% if rating.ending_image %}
         <img src="{{ rating.ending_image }}" alt="Image representing the film/tv series" class="card-image-preview" />
         {% else %}
-        <img src="/static/images/DefaultCardImage.png" alt="Default image representing a film/tv series" class="card-image-preview" />
-        {% endif %}      
+        <img src="/static/images/DefaultCardImage.png" alt="Default image representing a film/tv series"
+          class="card-image-preview" />
+        {% endif %}
       </div>
       <div class="card-content">
-        <div class="card-rates"><span class="new badge" data-badge-caption="Upvotes">{{ rating.rated }}</span></div> 
-        <div class="card-title"><p>{{ rating.ending_name }}</p></div>       
-        <div class="card-information"><p>({{ rating.ending_type }} - {{ rating.genre_name }})</p>
+        <div class="card-rates"><span class="new badge" data-badge-caption="Upvotes">{{ rating.rated }}</span></div>
+        <div class="card-title">
+          <p>{{ rating.ending_name }}</p>
+        </div>
+        <div class="card-information">
+          <p>({{ rating.ending_type }} - {{ rating.genre_name }})</p>
           <p><span class="card-date"><em>Added: {{ rating.ending_date }}</em></span></p>
-          <p><a class="card-link" href="{{ url_for('ending_detail', ending_id=rating._id) }}">Read Better Ending...</a></p>
-            </div>
-          </div> 
+          <p><a class="card-link" href="{{ url_for('ending_detail', ending_id=rating._id) }}">Read Better Ending...</a>
+          </p>
+        </div>
+      </div>
     </div>
   </div>
   {% endfor %}

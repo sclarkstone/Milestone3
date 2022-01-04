@@ -75,11 +75,11 @@ This site is targeted at people who have watched filmes or tv series and that ha
 
 * Navigation bar
 
-    * Featured on all pages, the fully responsive bar includes Logo (links to homepage). The links available are then customised depending on which type of user is viewing. If they are not logged in and are just viewing content then the links available are Home, Log in and register. If they are logged in as Admin then the links available are Home, Profile, New Ending and Log Out. All other logged in users have the following links available; Home, Porfile, New Ending and Log Out.
+    * Featured on all pages, the fully responsive bar includes Logo (links to homepage). The links available are then customised depending on which type of user is viewing. If they are not logged in and are just viewing content then the links available are Home, Log in and register.  All logged in users have the following links available; Home, Porfile, New Ending and Log Out.
     * This section will allow the user to easily navigate between pages without having to revert back to the previous page via the browsers back button.
     * The navigation bar uses a collapsed 'hamburger' style for the link on mobile devices and smaller screen sizes. 
 
-![Large screen nav bar - Admin logged in](static/images/NavAdmin.png)
+![Large screen nav bar - logged in](static/images/NavLargeScreen.png)
 ![Mobile screen nav bar](static/images/NavMobileScreen.png)
 
 
@@ -127,15 +127,22 @@ This site is targeted at people who have watched filmes or tv series and that ha
 
 ### login page
 
+![Screen shot of login page main content](static/images/LoginScreen.png)
+
 * A basic form is displayed with validated username and password fields. A flash message appear if login is unsuccessful due to missing fields or incorrect details entered that do not match the details in the users table. 
 * A link to the register page is displayed in case the user has not yet created an account. 
 
 ### Register page
 
+![Screen shot of register page main content](static/images/RegisterScreen.png)
+
 * A basic form is displayed with validated username and password fields. A flash message appear if login is unsuccessful due to missing fields or already existing username being entered that matches the details in the users table. 
 * A link to the login page is displayed in case the user has already created an account. 
 
 ### Profile page
+
+![Screen shot of profile page main content on large screen](static/images/ProfileLargeScreen.png)
+![Screen shot of profile page main content on mobile screen](static/images/ProfileMobileScreen.png)
 
 * There is dynamic content which displays differently depending on the results of a check to see the user type and number of endings the user has submitted. If the user is 'admin' then the text reads 'Here are all the submitted better endings. View, edit and delete them here.' with a table of all the endings. If the user is non admin and has submitted previous endings then the text reads 'Here are all your submitted better endings. View, edit and delete them here.' with a table of only endings they have submitted.  Finally if the non admin user has not previously submitted any endings then the text and table is hidden. 
 * A link to add a new ending is displayed to all users.
@@ -146,9 +153,13 @@ This site is targeted at people who have watched filmes or tv series and that ha
 
 ### Add new ending page
 
+![Screen shot of add new page main content](static/images/AddScreen.png)
+
 * A form is displayed with validated fields (all required with a minimum length except for image URL). 
 
 ### Edit ending page
+
+![Screen shot of edit page main content](static/images/EditScreen.png)
 
 * A form is displayed with validated fields (all required with a minimum length except for image URL). All fields that were completed on original submition or last edit are populated with the corresponding ending ids details. 
 
@@ -163,7 +174,7 @@ This site is targeted at people who have watched filmes or tv series and that ha
 
 ![Chrome Lighthouse audit results](static/images/LighthouseAudit.png)
 
-* Chrome Lighthouse audit (Chrome -> dev tools -> Lighthouse) was run to for performance, accessibility, SEO and best practices. After running the initial audit the Best Practices and accesibility categories only scored an amber rather then green as the rest of the categories did. 
+* Chrome Lighthouse audit (Chrome -> dev tools -> Lighthouse) was run to for performance, accessibility, SEO and best practices. After running the initial audit the Best Practices category only scored an amber rather then green as the rest of the categories did. 
     * The audit advised that the 'Image natural dimensions should be proportional to the display size and the pixel ratio to maximize image clarity'. After using a higher quality image for the one card that was identified this then resolved the issue. To esure this issue would not happen again i decided to add some guidance instructions to the user form where image URLs are added and to have a default image if an appropriate quality image URL could not be found by the user.
     * The audit advised that 'Links to cross-origin destinations are unsafe'. It suggested to Add rel="noopener or rel="noreferrer to any external links to improve performance and prevent security vulnerabilities. I added rel="noopener to the external social media links in the footer.
     * The audit advised that 'Background and foreground colors do not have a sufficient contrast ratio.'. So i used [material.io](https://material.io/resources/color/#!/?view.left=1&view.right=1&primary.color=0277bd] to find colours that were accessible. i updated the css with the new font and link colours.
@@ -300,7 +311,7 @@ non admin user logged in|Should see only endings the user submitted| user (sclar
     * 'Error: Element link is missing required attribute href.' - incorrect link used, i must have copy and pasted a link incorrectly from my milestone2 project for bootstrap instead of font awesome. Once the link was corrected the error was resolved.
     * 'Warning: Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections.' - amended the flash messages to sit inside a div rather then section. this corrected the warning.
     * 'Error: Stray start tag footer.' - the footer was outside of the closing body tag. moved the footer block inside and this corrected the error.
-    *Error: An img element must have an alt attribute, except under certain condition - added alt tag to all card templates, this then corrected the error.
+    * Error: An img element must have an alt attribute, except under certain condition - added alt tag to all card templates, this then corrected the error.
 
     * After correcting the above errors and re running the w3c validator the following message came 'Document checking completed. No errors or warnings to show'.
 
@@ -350,7 +361,7 @@ After the third review with my mentor some recommendations for improvements were
 * When editing or deleting i got the error - "TypeError: 'Collection' object is not callable. If you meant to call the 'update' method on a 'Collection' object it is failing because no such method exists." I ended up getting tutor support to fix this. it turns out that remove is not a normal Mongo command, delete_one was needed instead and mongo.db.endings.update({"_id": ObjectId(ending_id)}, submit) needed to be  mongo.db.endings.update_one({"_id": ObjectId(ending_id)}, {"$set": submit}). 
 * top 3 highest rated not working, it was not showing the top 3 rated. On inspection i found that in the line 'ratings = mongo.db.endings.find().sort("ratings", -1).limit(3)' I had put the incorrect name of 'ratings' but to match the table field it needed to be 'rated'.
 * When carrying out UAT i realised that the admin functionality to edit and delete the genres and types would inadvertently effect the existing cards within the effected genre. As the effected cards would still exist under a non existant genre/ type. To rectify this for this project i have removed the admin functionality to add, edit and delete the genres and types and added this to the desirable features list. 
-* after applying the javascript function to display only short dates on the preview cards i found all the cards were displaying the same date which did not match what was bring stored in the endings table. after looking at my javascript function i found that i was using $(".card-date") inside the function but it needed to be $(this) to get the correct one rather then just the first one. Once i corrected this all short dates displayed as expected.
+* after applying the javascript function to display only short dates on the preview cards i found all the cards were displaying the same date which did not match what was bring stored in the endings table. after looking at my javascript function i found that i was using '.card-date' inside the function but it needed to be 'this' to get the correct one rather then just the first one. Once i corrected this all short dates displayed as expected.
 
 ## Desirable features
 This site for the purpose of this milestone project is a Minimum Viable Product (MVP) and contains essential features that allow it to function. Possible deseriable features for future development include;
@@ -452,4 +463,4 @@ Due to a Gitpod update that was implemented after my milestone 3 project build h
 
 ### Media
 
-* The card image URLs were taken from a range of sites from a google search of the relevant filem/ tv series. 
+* The card image URLs were taken from a range of sites from a google search of the relevant film/ tv series. 

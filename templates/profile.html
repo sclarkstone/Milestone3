@@ -9,60 +9,60 @@
       </h4>
       {% if item_count == 0 %}
       <p>Create your first <a href="{{ url_for('add_ending') }}">Better Ending</a> now.</p>
-      
+
       {% else %}
-        {% if session.user|lower == "admin"|lower %}
-        <p>Here are all the submitted better endings. View, edit and delete them here.</p>
-        <p>Or create a <a href="{{ url_for('add_ending') }}">New better ending</a> now.</p>
-        <table>
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-  
-          <tbody>
-            {% for admin_ending in admin_endings %}
-            <tr>
-              <td>{{ admin_ending.ending_name }}</td>
-              <td><a href="{{ url_for('ending_detail', ending_id=admin_ending._id) }}"
-                  class="btn-small light-green lighten-1">View</a>
+      {% if session.user|lower == "admin"|lower %}
+      <p>Here are all the submitted better endings. View, edit and delete them here.</p>
+      <p>Or create a <a href="{{ url_for('add_ending') }}">New better ending</a> now.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for admin_ending in admin_endings %}
+          <tr>
+            <td>{{ admin_ending.ending_name }}</td>
+            <td><a href="{{ url_for('ending_detail', ending_id=admin_ending._id) }}"
+                class="btn-small light-green lighten-1">View</a>
               <a href="{{ url_for('edit_ending', ending_id=admin_ending._id) }}"
-                  class="btn-small light-blue lighten-1">Edit</a>
+                class="btn-small light-blue lighten-1">Edit</a>
               <a href="{{ url_for('delete_ending', ending_id=admin_ending._id) }}"
-                  class="btn-small red lighten-1">Delete</a></td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-        {% else %}
-        <p>Here are all your submitted better endings. View, edit and delete them here.</p>
-        <p>Or create a <a href="{{ url_for('add_ending') }}">New better ending</a> now.</p>
-        <table>
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-  
-          <tbody>
-            {% for ending in endings %}
-            <tr>
-              <td>{{ ending.ending_name }}</td>
-              <td><a href="{{ url_for('ending_detail', ending_id=ending._id) }}"
-                  class="btn-small light-green lighten-1">View</a>
+                class="btn-small red lighten-1">Delete</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <p>Here are all your submitted better endings. View, edit and delete them here.</p>
+      <p>Or create a <a href="{{ url_for('add_ending') }}">New better ending</a> now.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for ending in endings %}
+          <tr>
+            <td>{{ ending.ending_name }}</td>
+            <td><a href="{{ url_for('ending_detail', ending_id=ending._id) }}"
+                class="btn-small light-green lighten-1">View</a>
               <a href="{{ url_for('edit_ending', ending_id=ending._id) }}"
-                  class="btn-small light-blue lighten-1">Edit</a>
-              <a href="{{ url_for('delete_ending', ending_id=ending._id) }}"
-                  class="btn-small red lighten-1">Delete</a></td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-        {% endif %}
-      
+                class="btn-small light-blue lighten-1">Edit</a>
+              <a href="{{ url_for('delete_ending', ending_id=ending._id) }}" class="btn-small red lighten-1">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endif %}
+
 
     </div>
   </div>

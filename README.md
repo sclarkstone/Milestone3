@@ -158,7 +158,9 @@ This site is targeted at people who have watched filmes or tv series and that ha
 
 ![Chrome Lighthouse audit results](static/images/LighthouseAudit.png)
 
-* Chrome Lighthouse audit (Chrome -> dev tools -> Lighthouse) was run to for performance, accessibility, SEO and best practices. After running the initial audit the Best Practices category only scored an amber rather then green as the rest of the categories did. The audit advised that the 'Image natural dimensions should be proportional to the display size and the pixel ratio to maximize image clarity'. After using a higher quality image for the one card that was identified this then resolved the issue. To esure this issue would not happen again i decided to add some guidance instructions to the user form where image URLs are added and to have a default image if an appropriate quality image URL could not be found by the user. 
+* Chrome Lighthouse audit (Chrome -> dev tools -> Lighthouse) was run to for performance, accessibility, SEO and best practices. After running the initial audit the Best Practices and accesibility categories only scored an amber rather then green as the rest of the categories did. 
+    * The audit advised that the 'Image natural dimensions should be proportional to the display size and the pixel ratio to maximize image clarity'. After using a higher quality image for the one card that was identified this then resolved the issue. To esure this issue would not happen again i decided to add some guidance instructions to the user form where image URLs are added and to have a default image if an appropriate quality image URL could not be found by the user. 
+    * The audit advised that 'Background and foreground colors do not have a sufficient contrast ratio.'. So i used [material.io](https://material.io/resources/color/#!/?view.left=1&view.right=1&primary.color=0277bd] to find colours that were accessible. i updated the css with the new font and link colours.
 
 ![Chrome Lighthouse audit results second attempt](static/images/LighthouseAuditFinal.png)
 

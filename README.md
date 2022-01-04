@@ -86,11 +86,13 @@ This site is targeted at people who have watched filmes or tv series and that ha
 * Content
 
     * The home page begins with a larger header which immediatly gives the context of the site.
-    * There is a dynamic link which checks to see if a user is logged in. if there is not a user session set then a link to the login/ register pages are displayed. If there is a user session set then a link directly to the new ending page is displayed.
+    * There is a dynamic link which displays depending on the results of a check to see if a user is logged in. if there is not a user session set then a link to the login/ register pages are displayed. If there is a user session set then text encouraging the user to upvote the ending if they like it is displayed.
     * Further details then provide a link so that a user can browse all the site content.
     * A row of cards display the top 3 - most recently added endings into the database.This is dynamic and will always display the most recent from all the records in the database.
     * A further row of cards display the top 3 - highest rated endings. This is dynamic and will always display the highest rated from all the records in the database. 
     * The card rows are responsive to screen size and will adjust accordingly by having the cards side by side on a larger screen size. On a smaller screen size the cards will appear below one another.
+    * A default image is used for all cards where an ending image URL has not been provided.
+    * The preview cards display summary information of the ending images (or default image), title, genre, type, submitted short date, rating and a link to the view page for full details.
 
 ![Large screen main content](static/images/HomeLargeScreen.png)
 ![Mobile screen main content](static/images/HomeMobileScreen.png)
@@ -105,6 +107,38 @@ This site is targeted at people who have watched filmes or tv series and that ha
 
 * A search function allows a search for words in the titles of the endings, it displays all cards with the searched words in the titles. The reset button then displays all of the results again.
 * The card rows are responsive to screen size and will adjust accordingly by having the cards side by side on a larger screen size. On a smaller screen size the cards will appear below one another.
+* A default image is used for all cards where an ending image URL has not been provided.
+* The preview cards display summary information of the ending images (or default image), title, genre, type, submitted short date, rating and a link to the view page for full details.
+
+
+### View page
+
+* The view page begins with a larger header which immediatly gives the context for the page.
+* There is a dynamic link which displays depending on the results of a check to see if a user is logged in. if there is not a user session set then a link to the login/ register pages are displayed. If there is a user session set then text encouraging the user to upvote the ending if they like it is displayed.
+* One card showing the card details from the selected ending id. 
+* A default image is used for all cards where an ending image URL has not been provided.
+* The card displays the full details of the ending image (or default image), title, genre, type, author, submitted full date, rating and the full better ending.
+* There is a dynamic button which displays depending on the results of a check to see if a user is logged in. if there is not a user session set then the upvote button is not displayed. If there is a user session set then the upvote button is displayed. A logged in user can upvote limitless times on all endings.
+
+### login page
+
+* A basic form is displayed with validated username and password fields. A flash message appear if login is unsuccessful due to missing fields or incorrect details entered that do not match the details in the users table. 
+* A link to the register page is displayed in case the user has not yet created an account. 
+
+### Register page
+
+* A basic form is displayed with validated username and password fields. A flash message appear if login is unsuccessful due to missing fields or already existing username being entered that matches the details in the users table. 
+* A link to the login page is displayed in case the user has already created an account. 
+
+### Profile page
+
+* There is dynamic content which displays differently depending on the results of a check to see the user type and number of endings the user has submitted. If the user is 'admin' then the text reads 'Here are all the submitted better endings. View, edit and delete them here.' with a table of all the endings. If the user is non admin and has submitted previous endings then the text reads 'Here are all your submitted better endings. View, edit and delete them here.' with a table of only endings they have submitted.  Finally if the non admin user has not previously submitted any endings then the text and table is hidden. 
+* A link to add a new ending is displayed to all users.
+* If the table of endings is displayed, this is where the user manages the endings. The action buttons for each ending enable to user to view, edit or delete the endigs that they have access to.
+* The view action button takes the user to the view page and displays the ending details of the corresponding selected ending id.
+* The edit action button takes the user to the edit page and displays the ending details in the edit form of the corresponding selected ending id.
+* The delete action button deletes the document from the endings table using the corresponding selected ending id.
+
 
 ## Testing
 
@@ -112,6 +146,7 @@ This site is targeted at people who have watched filmes or tv series and that ha
     * Got the error '404 - unable to load favicon.ico'. The pathway on the Base.html template was incorrect. Once the correct pathway link was used this corrected the issue. 
 
 * [Chrome developer tools](https://developer.chrome.com/docs/devtools/) device toggle toolbar was utilised to view the site via emulators of different screen sizes and devices.
+    * the profile page action buttons displayed side by side which was ok on a large screen size but on a mobile screen they meant the screen had to scrolled to get to them. To resolve this i put all buttons in one column and added some CSS margin-bottom so that on a mobile screen the buttons were displayed one above the other and remained side by side on larger screen sizes.
 
 
 ![Chrome Lighthouse audit results](static/images/LighthouseAudit.png)
@@ -309,6 +344,7 @@ This site for the purpose of this milestone project is a Minimum Viable Product 
 * more advanced searched and filter to allow easier content searches for the user as more content is added.
 * After clicking delete to have an alter to check the user wants to permenantly delete the ending.
 * Allow admin to add and edit genres and types without impacting existing endings.
+* consideration for the upvoting - maybe the author of the ending cannot upvote their own ending and maybe a logged in user should have a single limit for each ending. Perhaps a star rating would be better where the average of the total is used.
 
 ## Set up and Deployment
 

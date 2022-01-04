@@ -105,6 +105,9 @@ This site is targeted at people who have watched filmes or tv series and that ha
 
 ### Browse page (/endings)
 
+![Large screen shot of browse page main content](static/images/BrowseLargeScreen.png)
+![Mobile screen shot of browse page main content](static/images/BrowseMobileScreen.png)
+
 * A search function allows a search for words in the titles of the endings, it displays all cards with the searched words in the titles. The reset button then displays all of the results again.
 * The card rows are responsive to screen size and will adjust accordingly by having the cards side by side on a larger screen size. On a smaller screen size the cards will appear below one another.
 * A default image is used for all cards where an ending image URL has not been provided.
@@ -112,6 +115,8 @@ This site is targeted at people who have watched filmes or tv series and that ha
 
 
 ### View page
+
+![Screen shot of view page main content](static/images/ViewScreen.png)
 
 * The view page begins with a larger header which immediatly gives the context for the page.
 * There is a dynamic link which displays depending on the results of a check to see if a user is logged in. if there is not a user session set then a link to the login/ register pages are displayed. If there is a user session set then text encouraging the user to upvote the ending if they like it is displayed.
@@ -277,13 +282,15 @@ Dynamic Content|Display upvote button if user session set and increase upvote by
 Cards|ending details match the ending id selected to view| multiple endings selected and each view page then displays the correct ending details that corresponds to the ending id that was selected.|Pass
 
 
-#### Nav bar links
+#### User types
 
 Test | Expected Outcome | Actual outcome|status
 -----|------------------|----------------|--------
 not logged in|Should see Home, Browse, Login and register|can see Home, Browse, Login and register| Pass
 admin user logged in|Should see Home, Browse, Profile, New ending and log out|can see Home, Browse, Profile, New ending and log out| Pass
+admin user logged in|Should see all endings on profile page|can see all endings| Pass
 non admin user logged in|Should see Home, Browse, Profile, New ending and log out|can see Home, Browse, Profile, New ending and log out| Pass
+non admin user logged in|Should see only endings the user submitted| user (sclarkstone) displays the 5 that were submitted by this user| Pass
 
 
 ### Validator testing

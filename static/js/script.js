@@ -4,8 +4,8 @@
 
 
 $(".card-date").each(function() {
-    short_text = $(".card-date").html().substr(0, 21);
-    $(".card-date").html(short_text);
+    short_text = $(this).html().substr(0, 21);
+    $(this).html(short_text);
     });
 
 

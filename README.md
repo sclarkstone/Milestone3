@@ -103,7 +103,8 @@ This site is targeted at people who have watched filmes or tv series and that ha
 
 ### Browse page (/endings)
 
-* A search function 
+* A search function allows a search for words in the titles of the endings, it displays all cards with the searched words in the titles. The reset button then displays all of the results again.
+* The card rows are responsive to screen size and will adjust accordingly by having the cards side by side on a larger screen size. On a smaller screen size the cards will appear below one another.
 
 ## Testing
 
@@ -297,6 +298,7 @@ After the third review with my mentor some recommendations for improvements were
 * When editing or deleting i got the error - "TypeError: 'Collection' object is not callable. If you meant to call the 'update' method on a 'Collection' object it is failing because no such method exists." I ended up getting tutor support to fix this. it turns out that remove is not a normal Mongo command, delete_one was needed instead and mongo.db.endings.update({"_id": ObjectId(ending_id)}, submit) needed to be  mongo.db.endings.update_one({"_id": ObjectId(ending_id)}, {"$set": submit}). 
 * top 3 highest rated not working, it was not showing the top 3 rated. On inspection i found that in the line 'ratings = mongo.db.endings.find().sort("ratings", -1).limit(3)' I had put the incorrect name of 'ratings' but to match the table field it needed to be 'rated'.
 * When carrying out UAT i realised that the admin functionality to edit and delete the genres and types would inadvertently effect the existing cards within the effected genre. As the effected cards would still exist under a non existant genre/ type. To rectify this for this project i have removed the admin functionality to add, edit and delete the genres and types and added this to the desirable features list. 
+* after applying the javascript function to display only short dates on the preview cards i found all the cards were displaying the same date which did not match what was bring stored in the endings table. after looking at my javascript function i found that i was using $(".card-date") inside the function but it needed to be $(this) to get the correct one rather then just the first one. Once i corrected this all short dates displayed as expected.
 
 ## Desirable features
 This site for the purpose of this milestone project is a Minimum Viable Product (MVP) and contains essential features that allow it to function. Possible deseriable features for future development include;

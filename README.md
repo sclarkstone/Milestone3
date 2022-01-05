@@ -449,7 +449,7 @@ Due to a Gitpod update that was implemented after my milestone 3 project build h
     * responsivness and styling
     * Cards
     
-* [Code institute](https://learn.codeinstitute.net/) course material. Specifically the Task manager mini project for the log in, register and logout authentication. This module was also used to inspire the mongodb collection structure.
+* [Code institute](https://learn.codeinstitute.net/) course material. Specifically the Task manager mini project for the log in, register and logout authentication. This module was also used to inspire the mongodb collection structure along with the add, edit and delete management forms and actions.
 
 ### Content
 
